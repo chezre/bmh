@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title><?php echo $title; ?></title>
+        <link rel="icon" type="image/png" href="img/favicon.png" />
+        <link rel="stylesheet" type="text/css" href="css/global.css" />
+        <link rel="stylesheet" type="text/css" href="css/mypractice.css" />
+        <script type="text/javascript" language="javascript" src="js/mypractice.js"></script>
+ 	</head>
+	<body>
+		<div id="mainDiv">
+            <div style="padding:20px;width: auto !important;text-align: center;">
+                <img src="img/bmh_logo.png" width="265" height="86" />
+				<hr />
+            </div>
+  
+            <!-- start here -->
+            <div id="welcomeDiv">
+				Welcome <?php echo $v->vet_name; ?>
+			</div>
+			<div id="searchBox">
+                <table align="right" cellspacing="0" cellpadding="3">
+				<form action="pet.searchresults.php" method="POST" id="frmSearch" name="frmSearch" onsubmit="return validate();">
+                    <tr>
+						<td style="font-weight:bold;color: #33CCFF;">FIND PET</td>
+						<td align="right"><img src="img/search-blue.png" width="24" height="24" /></td>
+					</tr>
+					<tr>
+					 	<td>
+						 	<label for="pet_rfid">Chip number</label>
+						</td>
+						<td align="right">
+							<input class="inp" type="text" name="pet_rfid" id="pet_rfid" />
+						</td>
+					</tr>
+					<tr>
+					 	<td>
+						 	<label for="owner_email">Owner email address</label>
+						</td>
+						<td align="right">
+							<input class="inp" type="text" name="owner_email" id="owner_email" />
+						</td>
+					</tr>
+					<tr>
+					 	<td>
+						 	<label for="owner_name">Owner Name</label>
+						</td>
+						<td align="right">
+							<input class="inp" type="text" name="owner_name" id="owner_name" />
+						</td>
+					</tr>
+					<tr><td colspan="2" align="right"><img src="img/submit-blue.png" width="53" height="19" style="cursor: pointer" onclick="validate();" /></td></tr>
+				</form>
+				</table>
+            </div>
+            <div id="addDiv">
+                <div style="float: left;cursor:pointer"><a href="logout.php" style="color: inherit;font-weight: normal;font-size: 10pt">&gt; logout</a></div>
+                <div style="float: right;cursor:pointer" onclick="window.location='addrfid.php'" >
+                    <img src="img/addsquare-blue.png" width="32" height="32" align="middle" /> Register new Chip 
+                </div>
+            </div>
+			
+            <!-- body ends here -->
+		</div>
+		<div<?php echo $resultDisplay; ?> class="result"><?php echo $resultMessage; ?></div>
+        <div id="footerDivAdmin">
+            All Rights Reserved &reg;. BringMeHome Microchip Database &#124; <a href="contactus.php">Contact Us</a> &#124; <a href="legal.php">Legal</a>
+        </div>
+	</body>
+</html>

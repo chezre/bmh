@@ -1,0 +1,77 @@
+body {
+	font-family: Verdana,Palatino,Helvetica;
+	background: url(../img/bgrpt-new.jpg);
+	color: #909299;
+}
+#mainDiv {
+ 	padding:10px;
+	width:1000px;
+	margin: auto;
+	background-color: #FDFDFD;
+	min-height: 200px;
+	height: auto !important;
+}
+#footerDiv,#footerDivAdmin {
+    padding:10px;
+	width:1000px;
+	margin: auto;
+	min-height: 10px;
+    height: auto !important;
+    color: #FFF;
+    text-align: center;
+    font-size: 9pt;
+}
+#footerDiv {
+	background-color: #33CCFF;
+}
+#footerDivAdmin {
+	background-color: #33CCFF;
+}
+#footerDiv a,#footerDiv a:visited,#footerDivAdmin a,#footerDivAdmin a:visited {
+    text-decoration: none;
+    color: #FFF;
+    font-weight: normal;
+}
+.selectedImg {
+	border: 2px solid #000044;
+}
+.thumbNails {
+	border: 2px solid rgba(0, 0, 220, 0.2);
+}
+.thumbNails:hover { 
+	border: 2px solid #000044;	
+}
+.imgSelect {
+	margin-left: 10px;
+	float: left;
+	clear: left;
+}
+.btnGreen {
+	cursor: pointer;
+	background-color: #33CCFF;
+	border: 5px solid #33CCFF;
+	border-radius: 10px;
+	padding: 5px;
+	color: #FFF;
+	overflow: hidden;
+	min-width: 40px;
+	width: auto !important;
+	min-height: 15px;
+	height: auto !important;
+	float: left;
+	margin-top: 10px;
+	text-align: center;
+}
+.toolTipStyling {
+	font-size: 8pt;
+}
+
+/*
+
+colors: 
+#33CCFF;   <- blue
+#33CCFF;   <- blue
+#dfdfe1;   <- light grey
+#909299;   <- dark grey
+
+*/

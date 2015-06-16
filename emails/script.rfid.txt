@@ -1,0 +1,11 @@
+Hi There
+
+A new animal under the ID ###rfid### has been registered to the BringMeHome database under your email address!
+
+Please register if you are a new user or log in if you have an existing account, in order to add important animal information.
+
+http://###domain###/login.php
+
+Thank You
+
+Registered by ###regBy### ###regByEmail###

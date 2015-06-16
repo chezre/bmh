@@ -1,0 +1,10 @@
+Dear ###name###,
+
+Your log in information is as follows:
+
+Username: ###email###
+Password: As supplied
+
+http://###domain###/login.php
+
+Thank you

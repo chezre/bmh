@@ -1,0 +1,7 @@
+Dear ###name###,
+
+Your registration with the BringMeHome database is complete!
+
+You can now add information about your pets to our database to ensure a safe and fast return home should they get lost.
+
+Thank you for choosing BringMeHome Microchips.

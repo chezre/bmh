@@ -1,0 +1,11 @@
+Dear ###name###
+
+###oldname### has sent you the following animal to take ownership of on the BringMeHome database.
+
+ANIMAL DETAILS 
+###rfid###
+###petname###
+###petage###
+
+Please login to accept or decline the transfer.
+Thank You

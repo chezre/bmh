@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings>
+	<testing>N</testing>
+	<email>
+		<fromAddress email="info@rfid-experts.co.za" name="BringMeHome Info" />
+		<replyToAddress email="info@rfid-experts.co.za" name="BringMeHome Info" />
+		<CCs>
+			<!--address email="info@linchpin-pm.co.za" name="Nicholas Lamohr" /-->
+		</CCs>
+		<BCCs>
+			<!--address email="info@linchpin-pm.co.za" name="Nicholas Lamohr" /-->
+		</BCCs>
+	</email>
+	<info>
+		<contactNumber>074 258 1214</contactNumber>
+	</info>
+</settings>

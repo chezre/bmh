@@ -1,0 +1,5 @@
+Hi ###name###,
+
+This is a reminder for ###petname###&apos;s next vaccination on ###vacdate###.
+
+Looking forward to see you.

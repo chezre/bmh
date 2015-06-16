@@ -1,0 +1,7 @@
+Dear ###name###
+
+###superuser### has added a vaccine to ###petname###.
+ 
+Please login to view the vaccination details.
+
+Thank you

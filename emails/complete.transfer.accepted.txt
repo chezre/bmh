@@ -1,0 +1,3 @@
+Dear ###name###
+
+Your animal transfer to ###newname### has been accepted and is no longer part of your pets.

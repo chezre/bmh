@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Reports</title>
+        <link rel="icon" type="image/png" href="img/favicon.png" />
+        <link rel="stylesheet" type="text/css" href="css/global.css" />
+        <link rel="stylesheet" type="text/css" href="css/reports.css" />
+        <link rel="stylesheet" type="text/css" href="css/pagination.css" />
+        <script type="text/javascript" language="javascript" src="js/jquery-1.11.1.min.js"></script>
+
+		<script src="js/js/knockout-3.0.0.js"></script>
+        <script src="js/js/globalize.min.js"></script>
+        <script src="js/js/dx.chartjs.js"></script>
+        <script type="text/javascript" language="javascript" src="js/reports.js"></script>
+	</head>
+	<body>
+		<div id="mainDiv">
+            <div style="padding:20px;width: auto !important;text-align: center;">
+                <img src="img/bmh_logo.png" width="265" height="86" />
+				<hr />
+            </div>
+            <!-- start here -->
+			<div style="font-weight: bold; font-size: 22pt;margin-bottom: 15px;margin-left: 20px;">Registration Summary</div>
+			<div id="metrics">
+				<?php echo $metrics; ?>
+			</div>
+			<div id="mainMetric">
+				<div id="mainMetricHeading">Completed Registrations</div>
+				<div id="completedRegistrationsDiv"><?php echo $totalCompleted; ?></div>
+			</div>
+			<div id="searchDiv">
+				<div class="searchInput">Search</div>
+				<div class="searchInput"><input type="text" id="rfid" placeholder="Microchip #" /></div>
+				<div class="searchInput"><input type="text" id="email" placeholder="User Email" /></div>
+			</div>
+			<div id="detailsDiv">
+				<div id="detailsHeadingDiv"></div>
+				<input type="hidden" id="currentId" />
+				<table id="tblReportDetails" cellspacing="0" cellpadding="3" width="100%">
+					<tr id="chartRow"><td><div id="chartDiv"></div></td></tr>
+				</table>
+			</div>
+			<!-- end here -->
+            <div style="clear: both;margin-left: 20px;margin-top: 15px;margin-bottom:15px">
+				<a href="logout.php" style="color: inherit;font-weight: normal;font-size: 10pt">&gt; logout</a>
+				<a href="index.php" style="color: inherit;font-weight: normal;font-size: 10pt">&gt; search</a>
+				<a href="addrfid.php" style="color: inherit;font-weight: normal;font-size: 10pt">&gt; register chip</a>
+				<a href="register.php" style="color: inherit;font-weight: normal;font-size: 10pt">&gt; register user</a>
+				<a href="certificates" style="color: inherit;font-weight: normal;font-size: 10pt">&gt; view certificates</a>
+				<a href="reports.php" style="color: inherit;font-weight: normal;font-size: 10pt">&gt; reports</a>
+			</div>
+		</div>
+        <div id="footerDiv">
+            All Rights Reserved &reg;. BringMeHome Microchip Database &#124; <a href="contactus.php">Contact Us</a> &#124; <a href="legal.php">Legal</a>
+        </div>
+	</body>
+</html>

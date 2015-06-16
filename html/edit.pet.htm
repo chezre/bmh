@@ -1,0 +1,225 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Edit Pet</title>
+        <link rel="icon" type="image/png" href="img/favicon.png" />
+        <link rel="stylesheet" type="text/css" href="css/global.css" />
+        <link rel="stylesheet" type="text/css" href="css/edit.pet.css" />
+        <script type="text/javascript" language="javascript" src="js/jquery-1.11.0.min.js"></script>
+        <script type="text/javascript" language="javascript" src="js/jquery-ui-1.10.4.custom.min.js"></script>
+        <script type="text/javascript" language="javascript" src="js/edit.pet.js"></script>
+        <link href="css/ui-lightness/jquery-ui-1.10.4.custom.css" rel="stylesheet" />
+	</head>
+	<body>
+		<div id="mainDiv" style="overflow: auto">
+			<div style="padding:20px;width: auto !important;text-align: center;">
+                <img src="img/bmh_logo.png" width="265" height="86" />
+				<hr />
+            </div>
+  
+            <!-- start here -->
+            <div style="height: 50px;">
+	            <div id="headerDiv"><?php echo (empty($p->pet_name)) ? 'Your pet' : $p->pet_name; ?>&apos;s details</div>
+	            <div id="headerDiv2">Upload Pics</div>
+            </div>
+			<div id="petDetails">
+				<table width="100%" cellspacing="0" cellpadding="5">
+			 	<form action="script.save.pet.php" method="POST" enctype="multipart/form-data" onsubmit="return validate();" id="frmEditpet" name="frmEditpet">
+			 	<input type="hidden" name="pet_usr_id" id="pet_usr_id" value="<?php echo $usrId; ?>" />
+					<tbody style="background-color: #e7e7e7">
+					 <tr>
+					 	<td>
+						 	<label for="pet_rfid">Chip Number</label>
+						</td>
+						<td>
+							<?php echo $p->pet_rfid; ?>
+							<input type="hidden" name="pet_rfid" id="pet_rfid" value="<?php echo $p->pet_rfid; ?>" />
+							<input type="hidden" name="pet_id" value="<?php echo $p->pet_id; ?>" />
+						</td>
+					</tr>
+					<?php if ($p->pet_assigned_by_usr_id==$p->pet_usr_id) { ?>
+					<tr>
+					 	<td>
+						 	<label for="pet_assigned_by_usr_id">Vet</label> &#42;
+						</td>
+						<td>
+							<select class="inp" name="pet_assigned_by_usr_id" id="pet_assigned_by_usr_id">
+								<?php echo $vetIdOpts; ?>
+							</select>
+						</td>
+					</tr>
+						<?php } ?>
+					</tbody>
+					<tbody style="background-color: #FFF">
+					<!--?php if (empty($p->pet_species)||empty($p->pet_breed)||empty($p->pet_name)) { ?-->
+					<tr>
+					 	<td>
+						 	<label for="pet_name">Pet&apos;s name</label> &#42;
+						</td>
+						<td>
+							<input class="inp" type="text" name="pet_name" id="pet_name" value="<?php echo $p->pet_name; ?>"  />
+						</td>
+					</tr>
+					<tr>
+					 	<td>
+						 	<label for="pet_sex">Sex</label> 
+						</td>
+						<td>
+							<select class="inp" name="pet_sex" id="pet_sex">
+								<?php echo $petSexOpts; ?>
+							</select>
+						</td>
+					</tr>
+					<!--?php } ?-->
+					<tr>
+					 	<td>
+						 	<label for="pet_sterilized">Sterilized</label>
+						</td>
+						<td>
+							<?php /* if ($p->pet_sterilized=='Y') { ?>
+								Yes
+								<?php } else { */ ?> 
+							<select class="inp" name="pet_sterilized" id="pet_sterilized">
+								<?php echo $steriOpts; ?>
+							</select>
+							<?php //} ?>
+						</td>
+					</tr>
+					<!--?php  if (empty($p->pet_species)||empty($p->pet_breed)||empty($p->pet_name)) { ?-->
+					<tr>
+					 	<td>
+						 	<label for="pet_breed">Breed</label> &#42;
+						</td>
+						<td>
+							<input class="inp" type="text" name="pet_breed" id="pet_breed" value="<?php echo $p->pet_breed; ?>" />
+						</td>
+					</tr>
+					<tr>
+					 	<td>
+						 	<label for="pet_species">Species</label> &#42;
+						</td>
+						<td>
+							<select class="inp" name="pet_species" id="pet_species" onchange="isHorse(this);">
+								<?php echo $speciesOpts; ?>
+							</select>
+						</td>
+					</tr>
+					<tr style="display:none;" id="heightRow">
+						<td>
+							<label for="pet_height">Height (hands)</label>
+						</td>
+						<td><input type="text" id="pet_height" name="pet_height" value="<?php echo $p->pet_height; ?>" /></td>
+					</tr>
+					<tr>
+					 	<td>
+						 	<label for="pet_birthdate">Birth date</label>
+						</td>
+						<td>
+							<input class="inp" type="text" name="pet_birthdate" id="pet_birthdate" value="<?php echo $p->pet_birthdate; ?>" />
+						</td>
+					</tr>
+					<tr>
+					 	<td>
+						 	<label for="pet_colour">Colour</label> &#42;
+						</td>
+						<td>
+							<input class="inp" type="text" name="pet_colour" id="pet_colour" value="<?php echo $p->pet_colour; ?>" />
+						</td>
+					</tr>
+					<tr>
+					 	<td>
+						 	<label for="pet_distinguishing_features">Distinguishing features</label>
+						</td>
+						<td>
+							<textarea cols="35" name="pet_distinguishing_features" id="pet_distinguishing_features"><?php echo $p->pet_distinguishing_features; ?></textarea>
+						</td>
+					</tr>
+					<!--?php } ?-->
+					<tr>
+					 	<td>
+						 	<label for="pet_breeder_society">Breeder Society</label>
+						</td>
+						<td>
+							<input class="inp" type="text" name="pet_breeder_society" id="pet_breeder_society" value="<?php echo $p->pet_breeder_society; ?>" />
+						</td>
+					</tr>
+					<tr>
+					 	<td>
+						 	<label for="pet_weight">Weight (kg)</label>
+						</td>
+						<td>
+							<input class="inp" type="text" name="pet_weight" id="pet_weight" value="<?php echo $p->pet_weight; ?>" />
+						</td>
+					</tr>
+					<tr>
+					 	<td>
+						 	<label for="pet_general_notes">Notes</label>
+						</td>
+						<td>
+							<textarea cols="35" name="pet_general_notes" id="pet_general_notes"><?php echo $p->pet_general_notes; ?></textarea>
+						</td>
+					</tr>
+					<tr>
+					 	<td>
+						 	<label for="pet_status">Status</label>
+						</td>
+						<td>
+							<select name="pet_status" id="pet_status" class="inp" onchange="confirmStatusUpdate()"><?php echo $statusOpts; ?></select>
+							<input type="hidden" id="old_status" value="<?php echo $p->pet_status; ?>" />
+						</td>
+					</tr>
+					<tr><td colspan="2"><img src="img/submit-blue.png" align="middle" width="60" height="24" style="cursor: pointer" onclick="validate();" /> <span style="color:#F00;font-size: 8pt">&#42; fields marked with an asterisk must be completed.</span></td></tr>
+				</tbody>
+				</table>
+			</div>
+			<div id="imgLoader">
+				<div style="color:#33CCFF;padding: 10px; font-size: 9pt;text-align: left;">
+					Upload an image of your pet, ideal for distinguishing features and special breeds.
+				</div>
+				<div class="addPhoto">
+					<?php echo $petPhotos; ?>
+                    <hr  />
+                    <div style="color:#33CCFF; font-size: 9pt;text-align: left;">
+					   Don&apos;t have a pic?  Choose from our free selection.
+				    </div>
+                    <div style="margin-top: 10px;">
+                        <img src="img/dog_cartoon.png" style="cursor:pointer" onclick="showPreviewFree(this)" width="48" height="48" />
+                        <img src="img/dog_silhouette.png" style="cursor:pointer" onclick="showPreviewFree(this)" width="48" height="48" />
+                        <img src="img/cat_cartoon.png" style="cursor:pointer" onclick="showPreviewFree(this)" width="48" height="48" />
+                        <img src="img/cat_silhouette.png" style="cursor:pointer" onclick="showPreviewFree(this)" width="48" height="48" />
+                    </div>
+                    <div style="margin-top: 5px;" align="center">
+                        <img src="img/horse_cartoon.jpg" style="cursor:pointer" onclick="showPreviewFree(this)" width="48" height="48" />
+                        <img src="img/horse_silhouette.png" style="cursor:pointer" onclick="showPreviewFree(this)" width="48" height="48" />
+                    </div>
+                    <div id="divPreviewFree" style="display: none">
+                        <div id="closeFreePreviewBar" onclick="removeFreeImage()"><div style="padding: 3px;">x</div></div>
+                        <img id="imgPreviewFree" src="" />
+                    </div>
+				</div>
+				</form>
+			</div>
+			<?php if (!empty($p->pet_name)) { ?>
+			<div id="transferDiv">
+				<form action="transfer.pet.php" method="POST" onsubmit="return validateTrf();" id="frmTransfer" name="frmTransfer">
+					<input type="hidden" name="pet_id" value="<?php echo $p->pet_id; ?>" />
+					<input type="hidden" name="pet_usr_id" value="<?php echo $usrId; ?>" />
+					<label for="trfEmail">Transfer <?php echo $p->pet_name; ?> to</label>
+					<input type="text" name="trfEmail" id="trfEmail" class="inp" placeholder="new owner's email address" />
+					<img src="img/submit-blue.png" align="middle" width="60" height="24" style="cursor: pointer" onclick="validateTrf();" />
+				</form>
+			</div>	
+			<?php } ?>
+			<div style="margin-top: 20px;margin-bottom: 20px;margin-left: 20px;clear: both;">
+				<a href="logout.php" style="color: inherit;font-weight: normal;font-size: 10pt">&gt; logout</a>
+				<a href="<?php echo $_SESSION['user']['landingPage']; ?>" style="color: inherit;font-weight: normal;font-size: 10pt">&gt; home</a>
+			</div>
+		</div>
+        <div id="footerDiv">
+            All Rights Reserved &reg;. BringMeHome Microchip Database &#124; <a href="contactus.php">Contact Us</a> &#124; <a href="legal.php">Legal</a>
+        </div>
+	</body>
+</html>

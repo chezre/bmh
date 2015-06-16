@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Add Pet</title>
+        <link rel="icon" type="image/png" href="img/favicon.png" />
+        <link rel="stylesheet" type="text/css" href="css/global.css" />
+        <link rel="stylesheet" type="text/css" href="css/addpet.css" />
+        <script type="text/javascript" language="javascript" src="js/jquery-1.11.0.min.js"></script>
+        <script type="text/javascript" language="javascript" src="js/jquery-ui-1.10.4.custom.min.js"></script>
+        <script type="text/javascript" language="javascript" src="js/add.pet.js"></script>
+        <link href="css/ui-lightness/jquery-ui-1.10.4.custom.css" rel="stylesheet" />
+	</head>
+	<body>
+		<div id="mainDiv">
+			<div class="heading">Your Pet&apos;s details</div>
+			<table width="100%" cellspacing="0" cellpadding="5">
+		 	<form action="script.addpet.php" method="POST" enctype="multipart/form-data" onsubmit="return validate();">
+		 	<input type="hidden" name="pet_usr_id" id="pet_usr_id" value="<?php echo $usrId; ?>" />
+				 <tr>
+				 	<td>
+					 	<label for="pet_rfid">Chip number</label>
+					</td>
+					<td>
+						<input class="inp" type="text" name="pet_rfid" id="pet_rfid" />
+					</td>
+				</tr>
+				<tr>
+				 	<td>
+					 	<label for="pet_name">Pet&apos;s name</label>
+					</td>
+					<td>
+						<input class="inp" type="text" name="pet_name" id="pet_name" />
+					</td>
+				</tr>
+				<tr>
+				 	<td>
+					 	<label for="pet_sex">Sex</label>
+					</td>
+					<td>
+						<select class="inp" name="pet_sex" id="pet_sex">
+							<option value="M">M</option>
+							<option value="F">F</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+				 	<td>
+					 	<label for="pet_sterilized">Sterilized</label>
+					</td>
+					<td>
+						<select class="inp" name="pet_sterilized" id="pet_sterilized">
+							<option value="N">N</option>
+							<option value="Y">Y</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+				 	<td>
+					 	<label for="pet_breed">Breed</label>
+					</td>
+					<td>
+						<input class="inp" type="text" name="pet_breed" id="pet_breed" />
+					</td>
+				</tr>
+				<tr>
+				 	<td>
+					 	<label for="pet_species">Species</label>
+					</td>
+					<td>
+						<select class="inp" name="pet_species" id="pet_species">
+							<?php echo $speciesOpts; ?>
+						</select>
+					</td>
+				</tr>
+				<tr>
+				 	<td>
+					 	<label for="pet_birthdate">Birth date</label>
+					</td>
+					<td>
+						<input class="inp" type="text" name="pet_birthdate" id="pet_birthdate" />
+					</td>
+				</tr>
+				<tr>
+				 	<td>
+					 	<label for="pet_distinguishing_features">Distinguishing features</label>
+					</td>
+					<td>
+						<textarea name="pet_distinguishing_features" id="pet_distinguishing_features"></textarea>
+					</td>
+				</tr>
+				<tr>
+				 	<td>
+					 	<label for="pet_breeder_society">Breeder Society</label>
+					</td>
+					<td>
+						<input class="inp" type="text" name="pet_breeder_society" id="pet_breeder_society" />
+					</td>
+				</tr>
+				<tr>
+				 	<td>
+					 	<label for="pet_weight">Weight (kg)</label>
+					</td>
+					<td>
+						<input class="inp" type="text" name="pet_weight" id="pet_weight" />
+					</td>
+				</tr>
+				<tr>
+				 	<td>
+					 	<label for="pet_general_notes">Notes</label>
+					</td>
+					<td>
+						<textarea name="pet_general_notes" id="pet_general_notes"></textarea>
+					</td>
+				</tr>
+				<tr><td colspan="2"><input type="submit" value="submit" /></td></tr>
+			</table>
+		</div>
+		<div id="imgLoader">
+			<img src="img/photo-64x64.png" title="add photo" class="camera" />
+			<div class="addPhoto">
+				<input type="file" name="pet_photo_1" id="pet_photo_1" onchange="showPreview('pet_photo_1','imgPreview1')"><br />
+				<img src="img/dog-192x144.png" id="imgPreview1" width="192" height="144" class="previewImg" style="display: none;" />
+				<input type="file" name="pet_photo_2" id="pet_photo_2" onchange="showPreview('pet_photo_2','imgPreview2')"><br />
+				<img src="img/dog-192x144.png" id="imgPreview2" width="192" height="144" class="previewImg" style="display: none;" />
+				<input type="file" name="pet_photo_3" id="pet_photo_3" onchange="showPreview('pet_photo_3','imgPreview3')"><br />
+				<img src="img/dog-192x144.png" id="imgPreview3" width="192" height="144" class="previewImg" style="display: none;" />
+				<input type="file" name="pet_photo_4" id="pet_photo_4" onchange="showPreview('pet_photo_4','imgPreview4')"><br />
+				<img src="img/dog-192x144.png" id="imgPreview4" width="192" height="144" class="previewImg" style="display: none;" />
+			</div>
+			</form>
+		</div>
+        <div id="footerDiv">
+            All Rights Reserved &reg;. BringMeHome Microchip Database &#124; <a href="contactus.php">Contact Us</a> &#124; <a href="legal.php">Legal</a>
+        </div>
+	</body>
+</html>

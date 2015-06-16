@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Admin</title>
+        <link rel="icon" type="image/png" href="img/favicon.png" />
+        <link rel="stylesheet" type="text/css" href="css/global.css" />
+        <link rel="stylesheet" type="text/css" href="css/myadmin.css" />
+        <script type="text/javascript" language="javascript" src="js/jquery-1.11.1.min.js"></script>
+        <script type="text/javascript" language="javascript" src="js/myadmin.js"></script>
+	</head>
+	<body>
+		<div id="mainDiv">
+            <div style="padding:20px;width: auto !important;text-align: center;">
+                <img src="img/bmh_logo.png" width="265" height="86" />
+				<hr />
+            </div>
+  
+            <!-- start here -->
+            <div style="font-weight: bold; font-size: 22pt;margin-bottom: 15px;margin-left: 20px;">Admin Page</div>
+			<div class="heading">New Registrations<div style="float:right;font-size: 9pt;margin-right: 25px;"><a href="reminder.log.htm">view latest log</a></div></div>
+			<table cellspacing="0" cellpadding="5" width="95%" align="center" >
+				<thead>
+					<tr>
+						<th>User Type</th>
+						<th>User&apos;s name</th>
+						<th>User&apos;s email</th>
+						<th>User&apos;s cell</th>
+						<th>Registration date</th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php echo $newVetRows; ?>
+				</tbody>
+			</table>
+			<div id="divFunctionality">
+			<form action="load.vet.php" method="POST" name="frmSearch" id="frmSearch">
+				<input type="hidden" name="usr_id" id="usr_id" />
+			</form>
+            <div id="importCsvDiv">
+                <div style="font-weight:bold">Import Sold RFID&apos;s</div>
+                <form action="script.import.rfids.php" enctype="multipart/form-data" method="POST">
+                    <input type="file" name="filename" /> <br /><input type="submit" value="submit" />
+                </form>
+                <div style="<?php echo $showSuccessImportResult; ?>font-weight:bold;font-size: 9pt;color: #F00;margin-top:5px;">The file was successfully processed, <?php echo $importedRecordCount; ?> record<?php echo ($importedRecordCount!=1) ? 's':''; ?> imported.</div>
+                <div style="<?php echo $showFailedImportResult; ?>font-weight:bold;font-size: 9pt;color: #F00;margin-top:5px;">The file was not imported.  Please check the file and try again.</div>
+            </div>
+            <div id="resetPassword">
+            	<form action="admin.reset.password.php" method="POST" id="frmResetPassword">
+            		Reset User Password<br />
+            		<input type="text" name="email" id="email" placeholder="email address" /><br />
+            		<input type="password" name="password" id="password" placeholder="new password" /><br />
+            		<input type="password" id="confirm" placeholder="confirm password" /><br />
+            		<input type="checkbox" id="userMustReset" name="userMustReset" checked /> <label for="userMustReset" style="font-size: 9pt">Force User to Reset Password</label><br />
+            		<input type="button" value="save" id="btnResetPassword" />
+            	</form>
+            	<div id="pwdMsg" style="display:none">&nbsp;</div>
+            </div>
+            <div id="resendEmail">
+            	<form method="post" action="admin.resend.email.php" id="frmResendEmail">
+            		Resend Registration Email<br />
+            		<input type="text" name="email" id="resendEmailAddress" placeholder="email address" /> <br />
+            		<input type="button" value="send" id="btnResendEmail" />
+            	</form>
+            	<div id="emlMsg" style="display:none">&nbsp;</div>
+            </div>
+		</div>
+            <div style="clear: both;margin-left: 20px;margin-top: 15px;margin-bottom:15px">
+				<a href="logout.php" style="color: inherit;font-weight: normal;font-size: 10pt">&gt; logout</a>
+				<a href="index.php" style="color: inherit;font-weight: normal;font-size: 10pt">&gt; search</a>
+				<a href="addrfid.php" style="color: inherit;font-weight: normal;font-size: 10pt">&gt; register chip</a>
+				<a href="register.php" style="color: inherit;font-weight: normal;font-size: 10pt">&gt; register user</a>
+				<a href="certificates" style="color: inherit;font-weight: normal;font-size: 10pt">&gt; view certificates</a>
+				<a href="reports.php" style="color: inherit;font-weight: normal;font-size: 10pt">&gt; reports</a>
+			</div>
+		</div>
+        <div id="footerDiv">
+            All Rights Reserved &reg;. BringMeHome Microchip Database &#124; <a href="contactus.php">Contact Us</a> &#124; <a href="legal.php">Legal</a>
+        </div>
+	</body>
+</html>

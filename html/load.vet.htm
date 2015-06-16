@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Edit Vet</title>
+        <link rel="icon" type="image/png" href="img/favicon.png" />
+        <link rel="stylesheet" type="text/css" href="css/global.css" />
+        <link rel="stylesheet" type="text/css" href="css/addvet.css" />
+        <script type="text/javascript" language="javascript" src="js/load.vet.js"></script>
+	</head>
+	<body>
+		<div id="mainDiv">
+			<div style="padding:20px;width: auto !important;text-align: center;">
+                <img src="img/bmh_logo.png" width="265" height="86" />
+				<hr />
+            </div>
+  
+            <!-- start here -->
+			<?php if ($isAdmin) { ?>
+			<div id="heading">Confirm Vet Registration</div>
+			<?php } else { ?>
+			<div id="heading">My Details</div>
+			<?php } ?>
+			<div id="vetDetails">
+				<table width="100%" cellspacing="0" cellpadding="5">
+			 	<form action="script.save.vet.php" method="POST" onsubmit="return validate();" name="frmEditvet" id="frmEditvet" >
+			 	<input type="hidden" name="vet_id" value="<?php echo $v->vet_id; ?>" />
+			 	<input type="hidden" name="vet_usr_id" value="<?php echo $v->vet_usr_id; ?>" />
+					<tr>
+					 	<td>
+						 	<label for="vet_name">Full Name</label>
+						</td>
+						<td>
+							<input class="inp" type="text" name="vet_name" id="vet_name" value="<?php echo $v->vet_name; ?>" />
+						</td>
+					</tr>
+					<tr>
+					 	<td>
+						 	<label for="vet_cellphone_no">Cellphone</label>
+						</td>
+						<td>
+							<input class="inp" type="text" name="vet_cellphone_no" id="vet_cellphone_no" value="<?php echo $v->vet_cellphone_no; ?>" />
+						</td>
+					</tr>
+					<tr>
+			 		 	<td colspan="2" style="font-size:14pt;"><hr />Practice details</td>
+					</tr>
+					<tr>
+					 	<td>
+						 	<label for="vet_practice_no">Practice No</label>
+						</td>
+						<td>
+							<input class="inp" type="text" name="vet_practice_no" id="vet_practice_no" value="<?php echo $v->vet_practice_no; ?>" />
+						</td>
+					</tr>
+					<tr>
+					 	<td>
+						 	<label for="vet_practice_name">Practice name</label>
+						</td>
+						<td>
+							<input class="inp" type="text" name="vet_practice_name" id="vet_practice_name" value="<?php echo $v->vet_practice_name; ?>" />
+						</td>
+					</tr>
+					<tr>
+					 	<td rowspan="3" valign="top">
+						 	<label for="vet_practice_address_1">Address</label>
+						</td>
+						<td>
+							<input class="inp" type="text" name="vet_practice_address_1" id="vet_practice_address_1" value="<?php echo $v->vet_practice_address_1; ?>" />
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<input class="inp" type="text" name="vet_practice_address_2" id="vet_practice_address_2" value="<?php echo $v->vet_practice_address_2; ?>" />
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<input class="inp" type="text" name="vet_practice_address_3" id="vet_practice_address_3" value="<?php echo $v->vet_practice_address_3; ?>" />
+						</td>
+					</tr>
+					<tr>
+					 	<td>
+						 	<label for="vet_practice_postal_code">Postal Code</label>
+						</td>
+						<td>
+							<input class="inp" type="text" name="vet_practice_postal_code" id="vet_practice_postal_code" value="<?php echo $v->vet_practice_postal_code; ?>" />
+						</td>
+					</tr>
+					<tr>
+					 	<td>
+						 	<label for="vet_practice_telephone_no">Telephone</label>
+						</td>
+						<td>
+							<input class="inp" type="text" name="vet_practice_telephone_no" id="vet_practice_telephone_no" value="<?php echo $v->vet_practice_telephone_no; ?>" />
+						</td>
+					</tr>
+					<tr>
+					 	<td>
+						 	<label for="vet_practice_fax_no">Fax No</label>
+						</td>
+						<td>
+							<input class="inp" type="text" name="vet_practice_fax_no" id="vet_practice_fax_no" value="<?php echo $v->vet_practice_fax_no; ?>" />
+						</td>
+					</tr>
+					<tr>
+					 	<td>
+						 	<label for="vet_statutory_id">ID Number</label>
+						</td>
+						<td>
+							<input class="inp" type="text" name="vet_statutory_id" id="vet_statutory_id" value="<?php echo $v->vet_statutory_id; ?>" />
+						</td>
+					</tr>
+					<?php if ($_SESSION['user']['roleId']==1) { ?>
+					<tr>
+					 	<td>
+						 	<label for="vet_practice_fax_no">Verified by Administrator</label>
+						</td>
+						<td>
+							<select class="inp" name="vet_verified_by_admin" id="vet_verified_by_admin">
+								<option value="N">N</option>
+								<option value="Y">Y</option>
+							</select>
+						</td>
+					</tr>
+					<?php } ?>
+					<tr><td colspan="2"><img src="img/submit-blue.png" align="middle" width="60" height="24" style="cursor: pointer" onclick="validate();" /></td></tr>
+				</form>
+				</table>
+			</div>
+			<div style="width:620px;margin: auto;margin-top:15px;margin-bottom: 20px;">
+				<a href="logout.php" style="color: inherit;font-weight: normal;font-size: 10pt;text-decoration: none">&gt; logout</a> 
+				<a href="<?php echo $_SESSION['user']['landingPage']; ?>" style="color: inherit;font-weight: normal;font-size: 10pt;text-decoration: none">&gt; home</a>
+			</div>
+		</div>
+        <div id="footerDiv">
+            All Rights Reserved &reg;. BringMeHome Microchip Database &#124; <a href="contactus.php">Contact Us</a> &#124; <a href="legal.php">Legal</a>
+        </div>
+	</body>
+</html>

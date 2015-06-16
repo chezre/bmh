@@ -1,0 +1,7 @@
+Dear ###name###
+
+Please be advised that the animal you transferred to ###newname### has been declined.
+
+If you wish to return this animal to you, please contact the administrator.
+ 
+Thank You

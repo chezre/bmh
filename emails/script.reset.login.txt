@@ -1,0 +1,13 @@
+Dear ###name###,
+
+A temporary password has been created for you. 
+Please login using this temporary password and then create a new password. ###rfid###
+
+Username: ###email###
+Temporary Password: ###temporarypassword###
+
+Please copy and paste this link into your browser to login.
+
+http://###domain###/login.php
+
+Thank you

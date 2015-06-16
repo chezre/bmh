@@ -1,0 +1,12 @@
+Dear ###name###,
+
+Thank you for registering with the BringMeHome database. 
+An administrator will confirm your details and verify your practice details. 
+
+Please copy and paste this link into your browser confirm your email address.
+
+###link###
+
+Thank you
+
+Registered by ###regBy### ###regByEmail###
