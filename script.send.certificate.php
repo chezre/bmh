@@ -52,6 +52,25 @@ if (empty($pet->pet_certificate_emailed)) {
 			$mail->AddAddress($u->usr_email,$pow->pow_first_name . ' ' . $pow->pow_last_name);
 			if (file_exists($filename)) $mail->AddAttachment($filename);
 			$result = $mail->sendEmail();
+			
+			# Send the KUSA mail
+			if (!empty($GLOBALS['cfg']->KUSA->toAddresses)) {
+				$mail->ClearAddresses();
+				
+				$bodyTxt = preg_replace(array("/###name###/"),array('KUSA'),file_get_contents('emails/kusa.txt'));
+				$bodyHtml = preg_replace(array("/###name###/"),array('KUSA'),file_get_contents('emails/kusa.htm'));
+				$bodyTxt = preg_replace("/###domain###/", $GLOBALS['domain'], $bodyTxt);
+				$bodyHtml = preg_replace("/###domain###/", $GLOBALS['domain'], $bodyHtml);
+				
+				$mail->AltBody = $bodyTxt;
+				$mail->MsgHTML($bodyHtml);
+				
+				foreach ($GLOBALS['cfg']->KUSA->toAddresses->children() as $e) {
+					$mail->AddAddress($e['email'],$e['name']);
+				}
+				$mail->sendEmail();
+			}
+			
 		} catch (phpmailerException $e) {
 			# DO NOTHING
 		}

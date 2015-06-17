@@ -31,6 +31,7 @@
 	
 	#email
 	require('class.phpmailer.php');
+	require('DAO/class.emaillog.php');
 	require('class.phpmailer.extension.php');
 	require('class.smtp.php');
 	

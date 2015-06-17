@@ -14,4 +14,10 @@
 	<info>
 		<contactNumber>074 258 1214</contactNumber>
 	</info>
+	<KUSA>
+		<toAddresses>
+			<!--address email="cindiep@kusa.co.za" name="Cindy Something" /-->
+			<address email="info@netninja.co.za" name="Net Ninja" />
+		</toAddresses>
+	</KUSA>
 </settings>
