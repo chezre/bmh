@@ -1,0 +1,37 @@
+.fail {
+	font-size: 12pt;
+	font-weight: bold;
+	color: #F00;
+	width: 600px;
+	height: 30px;
+	margin: auto;
+	clear:both;
+	margin-top:20px;
+	text-align: center;
+}
+
+#rfidBox {
+    width: 500px;
+    height:  186px;
+    background-image:  url('../img/loginbox.png');
+    background-repeat:no-repeat;
+	-webkit-background-size: cover; /* For WebKit*/
+    -moz-background-size: cover;    /* Mozilla*/
+    -o-background-size: cover;      /* Opera*/
+    background-size: cover;
+    margin:  auto;
+    font-size: 12pt;
+}
+
+table {
+    width: 90%;
+    margin-left: 20px;
+}
+input {
+    width: 280px;
+}
+a {
+	color: #33CCFF;
+	text-decoration: none;
+	font-weight: bold;
+}

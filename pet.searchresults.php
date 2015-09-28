@@ -23,6 +23,7 @@ $searchResultRows = '<tr><td colspan="5">No pets found</td></tr>';
 $ownerName = (isset($_POST['owner_name'])) ? $_POST['owner_name']:'';
 	$ownerEmail = (isset($_POST['owner_email'])) ? $_POST['owner_email']:'';
 	$searchResults = $GLOBALS['fn']->petSearch($_POST['pet_rfid'],$ownerName,$ownerEmail);
+    $isRegistrationComplete = true;
 	
 	if (!empty($searchResults)) {
 		$searchResultRows = '';
@@ -41,6 +42,7 @@ $ownerName = (isset($_POST['owner_name'])) ? $_POST['owner_name']:'';
 				$searchResultRows .= '<td>'.$v['Owner Name'].'</td>';
 				$searchResultRows .= '</tr>';
 			} else {
+			 $isRegistrationComplete = false;
 				$searchResultRows .= '<tr class="'.$rwClass.'"><td>&nbsp;</td><td colspan="3">' . $v['pet_rfid'] . ' not registered yet</td></tr>';
 			}
 		}

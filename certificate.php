@@ -31,6 +31,7 @@ $margins = array(0,0,0,0);
 ob_start();
 include('html/certificate.htm');
 $content = ob_get_clean();
+
 $filename = $pet->pet_rfid.'-certification.pdf';
 try
 {
@@ -43,5 +44,3 @@ catch(HTML2PDF_exception $e) {
     echo $e;
     exit;
 }
-
-?>

@@ -44,7 +44,7 @@ if (empty($pet->pet_certificate_emailed)) {
 			$mail = new extendedPhpmailer();
 			$mail->SetFrom($GLOBALS['cfg']->email->fromAddress['email'], $GLOBALS['cfg']->email->fromAddress['name']);
 			$mail->AddReplyTo($GLOBALS['cfg']->email->replyToAddress['email'], $GLOBALS['cfg']->email->replyToAddress['name']);
-			$mail->AddCC($GLOBALS['cfg']->email->from['email'], $GLOBALS['cfg']->email->from['name']);
+			$mail->AddCC($GLOBALS['cfg']->email->adminAddress['email'], $GLOBALS['cfg']->email->adminAddress['name']);
 			$mail->Subject = 'Microchip Certificate';
 			$mail->IsHTML();
 			$mail->AltBody = $bodyTxt;
@@ -52,25 +52,23 @@ if (empty($pet->pet_certificate_emailed)) {
 			$mail->AddAddress($u->usr_email,$pow->pow_first_name . ' ' . $pow->pow_last_name);
 			if (file_exists($filename)) $mail->AddAttachment($filename);
 			$result = $mail->sendEmail();
-			
-			# Send the KUSA mail
-			if (!empty($GLOBALS['cfg']->KUSA->toAddresses)) {
-				$mail->ClearAddresses();
-				
-				$bodyTxt = preg_replace(array("/###name###/"),array('KUSA'),file_get_contents('emails/kusa.txt'));
-				$bodyHtml = preg_replace(array("/###name###/"),array('KUSA'),file_get_contents('emails/kusa.htm'));
-				$bodyTxt = preg_replace("/###domain###/", $GLOBALS['domain'], $bodyTxt);
-				$bodyHtml = preg_replace("/###domain###/", $GLOBALS['domain'], $bodyHtml);
-				
-				$mail->AltBody = $bodyTxt;
-				$mail->MsgHTML($bodyHtml);
-				
-				foreach ($GLOBALS['cfg']->KUSA->toAddresses->children() as $e) {
-					$mail->AddAddress($e['email'],$e['name']);
-				}
-				$mail->sendEmail();
-			}
-			
+            
+            # Send the KUSA mail
+    		if (!empty($GLOBALS['cfg']->KUSA->email)) {
+    			$mail->ClearAddresses();
+    			
+    			$bodyTxt = preg_replace(array("/###name###/"),array($GLOBALS['cfg']->KUSA->name),file_get_contents('emails/kusa.txt'));
+    			$bodyHtml = preg_replace(array("/###name###/"),array($GLOBALS['cfg']->KUSA->name),file_get_contents('emails/kusa.htm'));
+    			$bodyTxt = preg_replace("/###domain###/", $GLOBALS['domain'], $bodyTxt);
+    			$bodyHtml = preg_replace("/###domain###/", $GLOBALS['domain'], $bodyHtml);
+    			
+    			$mail->AltBody = $bodyTxt;
+    			$mail->MsgHTML($bodyHtml);
+                
+                $mail->AddAddress($GLOBALS['cfg']->KUSA->email,$GLOBALS['cfg']->KUSA->name);
+
+    			$mail->sendEmail();
+    		}
 		} catch (phpmailerException $e) {
 			# DO NOTHING
 		}

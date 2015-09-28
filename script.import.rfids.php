@@ -13,6 +13,10 @@ ini_set('display_errors', '1');
 
 if (!empty($_FILES)) {
     $newLocation = 'uploads/'.$_FILES['filename']['name'];
+    if (!preg_match('/.csv/',$newLocation)) {
+        header('location: '.$_SESSION['user']['landingPage'].'?r=rifailed');
+        exit();
+    }
     move_uploaded_file($_FILES['filename']['tmp_name'],$newLocation);
     $handle = fopen($newLocation,'r');
     $records = array();

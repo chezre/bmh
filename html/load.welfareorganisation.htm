@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Welfare Organisation Registration</title>
+        <link rel="icon" type="image/png" href="img/favicon.png" />
+        <link rel="stylesheet" type="text/css" href="css/global.css" />
+        <link rel="stylesheet" type="text/css" href="css/addwelfare.css" />
+        <script type="text/javascript" language="javascript" src="js/addwelfare.js"></script>
+	</head>
+	<body>
+		<div id="mainDiv"> 	
+			<div style="padding:20px;width: auto !important;text-align: center;">
+                <img src="img/bmh_logo.png" width="265" height="86" />
+				<hr />
+            </div>
+  
+            <!-- start here -->
+			<?php if ($isAdmin) { ?>
+			<div id="heading">Confirm Welfare Organisation Registration</div>
+			<?php } else { ?>
+			<div id="heading">Welfare Organisation details</div>
+			<?php } ?>
+			<div id="welfareDetails">
+		 		<table width="100%" cellspacing="0" cellpadding="5">
+			 	<form action="script.save.welfare.php" method="POST" onsubmit="return validate()" name="frmAddwelfare" id="frmAddwelfare">
+			 		<input type="hidden" name="wel_id" id="wel_id" value="<?php echo $w->wel_id; ?>" />
+			 		<input type="hidden" name="wel_usr_id" id="wel_usr_id" value="<?php echo $w->wel_usr_id; ?>" />
+					 <tr>
+					 	<td>
+						 	<label for="usr_email">Email</label>
+						</td>
+						<td>
+							<?php echo $u->usr_email; ?>
+							<input type="hidden" name="usr_email" id="usr_email" value="<?php echo $u->usr_email; ?>" />
+							<input type="hidden" name="cfm_email" id="cfm_email" value="<?php echo $u->usr_email; ?>" />
+						</td>
+					</tr>
+					<tr>
+					 	<td>
+						 	<label for="wel_name">Welfare Name</label>
+						</td>
+						<td>
+							<input class="inp" type="text" name="wel_name" id="wel_name" value="<?php echo $w->wel_name; ?>" />
+						</td>
+					</tr>
+					<tr>
+					 	<td rowspan="3" valign="top">
+						 	Address
+						</td>
+						<td>
+							<input class="inp" type="text" name="wel_address_1" id="wel_address_1" value="<?php echo $w->wel_address_1; ?>" />
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<input class="inp" type="text" name="wel_address_2" id="wel_address_2" value="<?php echo $w->wel_address_2; ?>" />
+						</td>
+					</tr>
+					<tr>
+					 	<td>
+							<input class="inp" type="text" name="wel_address_3" id="wel_address_3" value="<?php echo $w->wel_address_3; ?>" />
+						</td>
+					</tr>
+					<tr>
+					 	<td>
+						 	<label for="wel_postal_code">Postal Code</label>
+						</td>
+						<td>
+							<input class="inp" type="text" name="wel_postal_code" id="wel_postal_code" value="<?php echo $w->wel_postal_code; ?>" />
+						</td>
+					</tr>
+					<tr>
+					 	<td>
+						 	<label for="wel_city">City</label>
+						</td>
+						<td>
+							<input class="inp" type="text" name="wel_city" id="wel_city" value="<?php echo $w->wel_city; ?>" />
+						</td>
+					</tr>
+					<tr>
+					 	<td>
+						 	<label for="wel_country">Country</label>
+						</td>
+						<td>
+							<input class="inp" type="text" name="wel_country" id="wel_country" value="<?php echo $w->wel_country; ?>" />
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">Contact Details</td>
+					</tr>
+					<tr>
+						<td><label for="wel_contact_fullname">Full Name</label></td>
+						<td><input class="inp" type="text" name="wel_contact_fullname" id="wel_contact_fullname" value="<?php echo $w->wel_contact_fullname; ?>" />
+					</tr>
+					<tr>
+					 	<td>
+						 	<label for="wel_contact_mobile_number">Cellphone Number</label>
+						</td>
+						<td>
+							<input class="inp" type="text" name="wel_contact_mobile_number" id="wel_contact_mobile_number" value="<?php echo $w->wel_contact_mobile_number; ?>" />
+						</td>
+					</tr>
+					<tr>
+					 	<td>
+						 	<label for="wel_contact_number">Telephone Number</label>
+						</td>
+						<td>
+							<input class="inp" type="text" name="wel_contact_number" id="wel_contact_number" value="<?php echo $w->wel_contact_number; ?>" />
+						</td>
+					</tr>
+					<?php if ($_SESSION['user']['roleId']==1) { ?>
+					<tr>
+					 	<td>
+						 	<label for="vet_practice_fax_no">Verified by Administrator</label>
+						</td>
+						<td>
+							<select class="inp" name="wel_verified_by_admin" id="wel_verified_by_admin">
+								<option value="N">N</option>
+								<option value="Y">Y</option>
+							</select>
+						</td>
+					</tr>
+					<?php } ?>
+					<tr><td colspan="2"><img src="img/submit-blue.png" align="middle" width="60" height="24" style="cursor: pointer" onclick="validate();" /></td></tr>
+				</form>
+				</table>
+		 	</div>
+		 	<div style="width:620px;margin: auto;margin-top:15px;margin-bottom: 20px;">
+				<a href="logout.php" style="color: inherit;font-weight: normal;font-size: 10pt;text-decoration: none">&gt; logout</a> 
+				<a href="<?php echo $_SESSION['user']['landingPage']; ?>" style="color: inherit;font-weight: normal;font-size: 10pt;text-decoration: none">&gt; home</a>
+			</div>
+		</div>
+        <div id="footerDiv">
+            All Rights Reserved &reg;. BringMeHome Microchip Database &#124; <a href="contactus.php">Contact Us</a> &#124; <a href="legal.php">Legal</a>
+        </div>
+	</body>
+</html>

@@ -1,0 +1,55 @@
+#importCsvDiv,#resetPassword,#resendEmail {
+ 	padding:10px;
+ 	border: 5px solid #909299;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+	overflow: hidden;
+	min-width: 100px;
+    width: auto !important;
+	min-height:20px;
+	height: auto !important;
+	margin-top: 15px;
+    margin-left: 20px;
+    float: left;
+}
+#pwdMsg,#emlMsg {
+	color: blueviolet;
+	font-size: 9pt;
+}
+.addDiv {
+	width:550px;
+	margin:auto;
+	cursor:pointer;
+	margin-top: 15px;
+	font-size: 14pt;
+}
+.result {
+	font-weight: bold;
+	color: #F00;
+	font-size: 12pt;
+	float: right;
+	clear: both;
+	margin-top: 5px;
+}
+.vetRow:hover {
+	cursor: pointer;
+	background-color: #33CCFF;
+    color: #FFF;
+}
+.heading {
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+th {
+	text-align: left;
+	background-color: #33CCFF;
+    color: #FFF;
+}
+a {
+    text-decoration: none;
+}
+#divFunctionality{
+	width: auto;
+	height: auto;
+	overflow: hidden;
+}

@@ -1,0 +1,58 @@
+#ownerDetails,#frmDiv {
+ 	padding:10px;
+ 	border: 5px solid #909299;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+	width: 850px;
+	margin: auto;
+	color: #FFF;
+	background-color: #33CCFF;
+}
+#ownerName {
+	font-size: 20pt;	
+}
+a {
+	color: inherit;
+	text-decoration: none;
+}
+td {
+    border: 1px solid #909299;
+}
+table {
+    border: 1px solid #909299;
+    font-size: 10pt;
+}
+th {
+    text-align: left;
+    border: 1px solid #909299;
+}
+
+#petDiv {
+    min-height: 250px;
+    height: auto !important;
+    width: 850px;
+    margin: auto;
+    margin-top:15px;
+}
+#primaryImage {
+    float: left;
+}
+#imgSelect {
+    float: left;
+    clear: left;
+    margin-top: 10px;
+}
+#petDetails {
+    float: right;
+    min-width: 600px;
+    width: auto !important;
+    min-height: 250px;
+    height: auto !important;
+ }
+#vacHistoryDiv {
+    width: 850px;
+    margin: auto;
+}
+.lbl {
+    background-color: #dfdfe1;
+}

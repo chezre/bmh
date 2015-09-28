@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<dbconnection>
+	<username>bringbvw_pcdb</username>
+	<password>pcdb!@#</password>
+	<host>localhost</host>
+	<database>bringbvw_pcdb</database>
+</dbconnection>

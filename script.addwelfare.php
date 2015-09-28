@@ -38,7 +38,7 @@ try {
 	$mail = new extendedPhpmailer();
 	$mail->SetFrom($GLOBALS['cfg']->email->fromAddress['email'], $GLOBALS['cfg']->email->fromAddress['name']);
 	$mail->AddReplyTo($GLOBALS['cfg']->email->replyToAddress['email'], $GLOBALS['cfg']->email->replyToAddress['name']);
-	$mail->AddCC($GLOBALS['cfg']->email->replyToAddress['email'], $GLOBALS['cfg']->email->replyToAddress['name']);
+	$mail->AddCC($GLOBALS['cfg']->email->adminAddress['email'], $GLOBALS['cfg']->email->adminAddress['name']);
 	$mail->Subject = 'Welfare Organisation Registration';
 	$mail->IsHTML();
 	$mail->AltBody = $bodyTxt;

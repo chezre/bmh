@@ -44,6 +44,7 @@ $u->Load($_GET['pow_usr_id']);
 			<?php echo $u->usr_email; ?>
 			<input type="hidden" name="usr_email" value="<?php echo $u->usr_email; ?>" />
 			<input type="hidden" name="usr_id" value="<?php echo $u->usr_id; ?>" />
+            <input type="hidden" name="pow_usr_id" value="<?php echo $u->usr_id; ?>" />
 		</td>
 	</tr>
 	<tr>

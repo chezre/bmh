@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Pet Owner Registration</title>
+        <link rel="icon" type="image/png" href="img/favicon.png" />
+		
+		<!-- Ninja Styles -->
+		<link rel="stylesheet" href="css/jquery-ui.css">
+        <link rel="stylesheet" type="text/css" href="css/global.css" />
+        <link rel="stylesheet" type="text/css" href="css/register.css" />
+		
+		<!-- Ninja Scripts -->
+        <script type="text/javascript" language="javascript" src="js/jquery-1.11.0.min.js"></script>
+        <script type="text/javascript" language="javascript" src="js/jquery-ui-1.10.4.custom.min.js"></script>
+        <script type="text/javascript" language="javascript" src="js/addvet.js"></script>
+        <script type="text/javascript" language="javascript" src="js/register.js"></script>
+		
+	</head>
+	<body>
+		<div id="mainDiv">
+            <div style="padding:20px;width: auto !important;text-align: center;">
+                <img src="img/bmh_logo.png" width="265" height="86" />
+				<hr />
+            </div>
+  
+            <!-- start here -->
+			<div class="fail" <?php echo $showFailMessage; ?>>The email address you entered alread exists in our database. <br />Try resetting your password <a href="reset.login.php">here</a></div>
+			
+			<!-- register selector -->
+            <?php include('registerSelect.php'); ?>
+			<!-- end register selector -->
+			
+            <div id="formDiv">
+				<table width="100%" cellspacing="0" cellpadding="5">
+					<form action="script.register.php" method="POST" name="frmOwnerRegister" id="frmOwnerRegister">
+					 <tr>
+						 <td colspan="2" style="font-size: 18pt">Pet Owner Registration<hr style="color: #33CCFF;" /></td>
+    				</tr>
+					<tr>
+					 	<td>
+						 	<label for="usr_email" title="Your email address">Email *</label>
+						</td>
+						<td>
+							<input class="inp" type="text" name="usr_email" id="usr_email" title="Your email address" />
+						</td>
+					</tr>
+					<tr>
+					 	<td>
+						 	<label for="cfm_email" title="Confirm your email address">Confirm Email *</label>
+						</td>
+						<td>
+							<input class="inp" type="text" id="cfm_email" title="Confirm your email address" />
+						</td>
+					</tr>
+					<tr>
+					 	<td>
+						 	<label for="usr_password" title="Create your password">Password *</label>
+						</td>
+						<td>
+							<input class="inp" type="password" name="usr_password" id="usr_password" title="Create your password" />
+						</td>
+					</tr>
+					<tr>
+					 	<td>
+						 	<label for="usr_password_confirm" title="Confirm your password">Confirm password *</label>
+						</td>
+						<td>
+							<input class="inp" type="password" id="usr_password_confirm" title="Confirm your password" />
+						</td>
+					</tr>
+					<tr>
+					 	<td>
+						 	<label for="pow_first_name" title="Insert your first name">First Name *</label>
+						</td>
+						<td>
+							<input class="inp" type="text" name="pow_first_name" id="pow_first_name" title="Insert your first name" />
+						</td>
+					</tr>
+					<tr>
+					 	<td>
+						 	<label for="pow_last_name" title="Insert your last name">Last Name *</label>
+						</td>
+						<td>
+							<input class="inp" type="text" name="pow_last_name" id="pow_last_name" title="Insert your last name" />
+						</td>
+					</tr>
+					<tr>
+					 	<td>
+						 	<label for="pow_address_1">Address line 1</label>
+						</td>
+						<td>
+							<input class="inp" type="text" name="pow_address_1" id="pow_address_1" />
+						</td>
+					</tr>
+					<tr>
+					 	<td>
+						 	<label for="pow_address_2">Address line 2</label>
+						</td>
+						<td>
+							<input class="inp" type="text" name="pow_address_2" id="pow_address_2" />
+						</td>
+					</tr>
+					<tr>
+					 	<td>
+						 	<label for="pow_address_3">Address line 3</label>
+						</td>
+						<td>
+							<input class="inp" type="text" name="pow_address_3" id="pow_address_3" />
+						</td>
+					</tr>
+					<tr>
+					 	<td>
+						 	<label for="pow_postal_code">Postal Code</label>
+						</td>
+						<td>
+							<input class="inp" type="text" name="pow_postal_code" id="pow_postal_code" />
+						</td>
+					</tr>
+					<tr>
+					 	<td>
+						 	<label for="pow_country">Country</label>
+						</td>
+						<td>
+							<input class="inp" type="text" name="pow_country" id="pow_country" />
+						</td>
+					</tr>
+					<tr>
+					 	<td>
+						 	<label for="pow_cellphone_no" title="Insert your cellphone number">Cellphone Number *</label>
+						</td>
+						<td>
+							<input class="inp" type="text" name="pow_cellphone_no" id="pow_cellphone_no" title="Insert your cellphone number" />
+						</td>
+					</tr>
+					<tr>
+					 	<td>
+						 	<label for="pow_telephone_no" title="Insert your telephone number">Telephone Number *</label>
+						</td>
+						<td>
+							<input class="inp" type="text" name="pow_telephone_no" id="pow_telephone_no" title="Insert your telephone number" />
+						</td>
+					</tr>
+					<tr><td colspan="2" align="right"><img src="img/submit-blue.png" width="53" height="19" style="cursor: pointer" onclick="validate();" /></td></tr>
+				</form>
+				</table>
+			</div>
+		</div>
+        <div id="footerDiv">
+            All Rights Reserved &reg;. BringMeHome Microchip Database &#124; <a href="contactus.php">Contact Us</a> &#124; <a href="legal.php">Legal</a>
+        </div>
+	</body>
+</html>

@@ -1,0 +1,22 @@
+#paginationDiv {
+	font-size: 11pt;
+	font-color: #FFF;
+	margin: auto;
+	width: 260px;
+	height: auto;
+	overflow: hidden;
+}
+#paginationDiv div {
+	float: left;
+	margin-right: 5px;
+	cursor: pointer;
+}
+tfoot > tr > td {
+	text-align: center;
+	background-color: #33CCFF;
+}
+#page {
+	width: 30px;
+	text-align: center;
+	border: 1px solid #33CCFF;
+}
