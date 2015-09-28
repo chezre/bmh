@@ -51,12 +51,12 @@ function validate() {
 		return;
 	}
 	
-	var stateId = document.getElementById('vet_statutory_id');
+	/*var stateId = document.getElementById('vet_statutory_id');
 	if (stateId.value.trim().length==0) {
 		alert('Your ID number is required.');
 		stateId.focus();
 		return;
-	}
+	}*/
 	
 	var pracNo = document.getElementById('vet_practice_no');
 	if (fname.value.trim().length==0) {
@@ -64,13 +64,18 @@ function validate() {
 		pracNo.focus();
 		return;
 	}
+	var telephone = document.getElementById('vet_practice_telephone_no');
+	if (telephone.value.trim().length==0) {
+		alert('Your telephone number is required.');
+		return;
+	}
 	
-	var cellphone = document.getElementById('vet_cellphone_no');
+	/*var cellphone = document.getElementById('vet_cellphone_no');
 	var telephone = document.getElementById('vet_practice_telephone_no');
 	if (cellphone.value.trim().length==0&&telephone.value.trim().length==0) {
 		alert('Your cellphone number/landline number is required.');
 		return;
-	}
+	}*/
 		
 	document.frmAddvet.submit();
 }

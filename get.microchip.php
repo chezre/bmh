@@ -73,7 +73,7 @@ foreach ($vetIds as $k=>$v) {
 <table width="100%" cellspacing="0" align="center">
 	<tbody style="background-color: #e7e7e7">
 		
-	<?php if (empty($p->pet_assigned_by_usr_id)||$p->pet_assigned_by_usr_id==$p->pet_usr_id) { ?>
+	<?php  /* if (empty($p->pet_assigned_by_usr_id)||$p->pet_assigned_by_usr_id==$p->pet_usr_id) { */ ?>
 	<tr>
 	 	<td>
 		 	<label for="pet_assigned_by_usr_id">Vet</label> &#42;
@@ -84,7 +84,15 @@ foreach ($vetIds as $k=>$v) {
 			</select>
 		</td>
 	</tr>
-		<?php } ?>
+	<tr>
+	 	<td>
+		 	<label for="pet_implanted_date">Date Microchip Implanted</label>
+		</td>
+		<td>
+			<input class="inp" type="date" name="pet_implanted_date" id="pet_implanted_date" value="<?php echo $p->pet_implanted_date; ?>" />
+		</td>
+	</tr>
+		<?php /* } */ ?>
 	</tbody>
 	<tbody style="background-color: #FFF">
 		<tr>

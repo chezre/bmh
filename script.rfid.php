@@ -65,6 +65,7 @@ $p->pet_usr_id = $u->usr_id;
 $p->pet_name = $_POST['pet_name'];
 $p->pet_assigned_by_usr_id = $_SESSION['user']['id'];
 $p->pet_register_date = date("Y-m-d H:i:s");
+$p->pet_implanted_date = date("Y-m-d");
 $p->Save();
 
 $assignedDetails = $GLOBALS['fn']->getInjectorInfo($_SESSION['user']['id']);

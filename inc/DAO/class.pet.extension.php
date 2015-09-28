@@ -7,6 +7,8 @@ Class extendedPet extends pet {
 		$vacDate = (empty($this->pet_next_vaccination_date)) ? 'null':"'$this->pet_next_vaccination_date'";
 		$regDate = (empty($this->pet_register_date)) ? 'null':"'$this->pet_register_date'";
 		$certDate = (empty($this->pet_certificate_emailed)) ? 'null':"'$this->pet_certificate_emailed'";
+		$implantedDate = (empty($this->pet_implanted_date)) ? 'null':"'$this->pet_implanted_date'";
+		
 		$usrId = (empty($this->pet_usr_id)) ? 'null':"'$this->pet_usr_id'";
 		if (isset($this->pet_id) && !empty($this->pet_id)) {
 		$sql = "
@@ -34,7 +36,8 @@ Class extendedPet extends pet {
 	              `pet_height` = '$this->pet_height',
 	              `pet_assigned_by_usr_id` = '$this->pet_assigned_by_usr_id',
 				  `pet_certificate_emailed` = $certDate,
-				  `pet_colour` = '$this->pet_colour'
+				  `pet_colour` = '$this->pet_colour',
+				  `pet_implanted_date` = $implantedDate
 	            WHERE
 	              `pet_id` = '$this->pet_id';";
 	    } ELSE {
@@ -62,7 +65,8 @@ Class extendedPet extends pet {
                   `pet_height`,
                   `pet_assigned_by_usr_id`,
 				  `pet_certificate_emailed`,
-				  `pet_colour`
+				  `pet_colour`,
+				  `pet_implanted_date`
 	    ) VALUES (
 	              '$this->pet_rfid',
 	              '$this->pet_usr_id',
@@ -86,12 +90,13 @@ Class extendedPet extends pet {
               '$this->pet_height',
               '$this->pet_assigned_by_usr_id',
 			  $certDate,
-			  '$this->pet_colour'
+			  '$this->pet_colour',
+			  $implantedDate
 	    );";
 	    }
 	    $result = $GLOBALS['db']->execute($sql);
 	    $this->pet_id = (empty($this->pet_id)) ? $GLOBALS['db']->connection->lastInsertId() : $this->pet_id;
-		
+		return $sql;
 	}
 	
 	function Import() {

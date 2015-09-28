@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<stats>
-	<item id="1" desc="Total Microchips" title="All Microchips" totalFn="getTotalMicrochips" detailFn="getAllMicrochips" />
-	<item id="2" desc="Registration Attempts" title="All Registration Attempts" totalFn="getTotalRegistrations" detailFn="getAllRegistrations" />
-	<item id="3" desc="Incomplete Registrations" title="All Incomplete Registrations" totalFn="getTotalIncompleteRegistrations" detailFn="getAllIncompleteRegistrations" />
-</stats>

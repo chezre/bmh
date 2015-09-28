@@ -1,0 +1,103 @@
+a {
+	text-decoration: none;
+}
+#formWrapper {
+	width: auto;
+	height: auto;
+	overflow: hidden;
+}
+#progressDiv {
+	float:left;
+}
+#formWrapper img {
+	margin-right: 20px;
+}
+ul {
+	list-style-type: none;
+	  padding-left: 20px;
+}
+li {
+	height: 25px;
+	cursor: pointer;
+}
+li:hover {
+	color: #FFF;
+	background-color: #33CCFF;
+}
+#searchDiv {
+	padding-left: 40px;
+	width: auto;
+	height: auto;
+	overflow: hidden;
+	margin-bottom: 20px;
+}
+#srch_value {
+	  font-size: 16pt;
+  padding: 5px;
+  width: 325px;
+  border: 5px solid #33CCFF;
+  float: left;
+  margin-right: 10px;;
+}
+.hdrDiv {
+	font-weight: bold; font-size: 22pt;margin-bottom: 15px;margin-left: 20px;
+}
+#searchResult,#saveResult {
+	  margin-left: 40px;
+  color: #FFF;
+  font-style: italic;
+  background-color: #45A950;
+  float: left;
+  padding: 10px;
+  margin-bottom: 10px;
+  margin-top: -10px;
+}
+.complete,.incomplete {
+	  float: right;
+  margin-right: 20px;
+  font-size: 15pt;
+  padding: 10px;
+  font-style: italic;
+  color: #FFF;
+}
+.complete {
+	background-color: #00BD00;
+}
+
+.incomplete {
+	background-color: #CD3333;
+}
+#currentForm {
+  min-width: 500px;
+  max-width: 550px;
+  width: auto;
+  min-height: 300px;
+  padding: 10px;
+    float: right;
+	margin-right: 20px;
+  background-color: #efefef;
+}
+.formHeading {
+	font-size: 14pt;
+  font-weight: bold;
+  padding-bottom: 5px;
+  border-bottom: 2px solid;
+  margin-bottom: 5px;
+}
+input,select {
+	padding: 2px;
+	  width: 180px;
+}
+.chkbx {
+	width: 20px;
+}
+.chkbx:hover {
+	background-color: inherit;
+}
+#tblVets thead {
+	background-color: #097300;
+}
+#tblVets > tbody > tr:hover {
+	background-color: #097300;
+	cursor: pointer;
+}

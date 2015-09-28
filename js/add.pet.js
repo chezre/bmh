@@ -1,5 +1,5 @@
 $(function() {
-    $( "#pet_birthdate" ).datepicker({
+    $( "#pet_birthdate, #pet_implanted_date" ).datepicker({
 		dateFormat: 'yy-mm-dd'	
 	});
   });
@@ -33,6 +33,15 @@ function validate() {
 		return false;
 	}
 	
+	var petImplantDate = document.getElementById('pet_implanted_date'); 
+	if (typeof(petImplantDate) != 'undefined' && petImplantDate != null)
+	{
+		if (petImplantDate.value.trim().length==0) {
+			alert('The date the microchip was implanted is required.');
+			petImplantDate.focus();
+			return;
+		}
+	}
 	var petName = document.getElementById('pet_name'); 
 	if (petName.value.trim().length==0) {
 		alert('The Pet\'s name is required.');

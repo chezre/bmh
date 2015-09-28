@@ -28,9 +28,11 @@ var $pet_height;
 var $pet_assigned_by_usr_id;
 var $pet_certificate_emailed;
 var $pet_colour;
+var $pet_implanted_date;
 
 function Load($id) {
 	if (empty($id)) return false;
+	
     $sql = "SELECT * FROM `pet` where `pet_id` = $id";
     $result = $GLOBALS['db']->select($sql);
     if (!$result) {
@@ -44,7 +46,7 @@ function Load($id) {
 }
 
 function Save() {
-	
+
 	if (isset($this->pet_id) && !empty($this->pet_id)) {
 	$sql = "
             UPDATE `pet` SET
@@ -72,7 +74,8 @@ function Save() {
               `pet_height` = '$this->pet_height',
               `pet_assigned_by_usr_id` = '$this->pet_assigned_by_usr_id',
 			  `pet_certificate_emailed` = '$this->pet_certificate_emailed',
-			  `pet_colour` = '$this->pet_colour'
+			  `pet_colour` = '$this->pet_colour',
+			  `pet_implanted_date` = '$this->pet_implanted_date'
             WHERE
                 `pet_id` = '$this->pet_id';";
     } ELSE {
@@ -102,7 +105,8 @@ function Save() {
               `pet_height`,
               `pet_assigned_by_usr_id`,
 			  `pet_certificate_emailed`,
-			  `pet_colour`
+			  `pet_colour`,
+			  `pet_implanted_date`
     ) VALUES (
               '$this->pet_rfid',
               '$this->pet_usr_id',
@@ -128,15 +132,13 @@ function Save() {
               '$this->pet_height',
               '$this->pet_assigned_by_usr_id',
 			  '$this->pet_certificate_emailed',
-			  '$this->pet_colour'
+			  '$this->pet_colour',
+			  '$this->pet_implanted_date'
     );";
     }
     $result = $GLOBALS['db']->execute($sql);
     $this->pet_id = (empty($this->pet_id)) ? $GLOBALS['db']->connection->lastInsertId() : $this->pet_id;
-	
+	return $sql;
 }
 
-# end class	
 }
-
-?>

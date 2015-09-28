@@ -28,8 +28,8 @@ class functions {
 	pet_id,
 	pow_id,
 	usr_id,
+    pet_register_date `Registered Date`,
 	CONCAT(pow_first_name,' ',pow_last_name) `Owner Name`,
-	pow_cellphone_no `Contact No`,
 	usr_email `Email`,
 	pet_rfid `Chip`,
 	pet_name `Pet Name`,
@@ -82,8 +82,8 @@ class functions {
 	pet_id,
 	pow_id,
 	usr_id,
+	pet_register_date `Registered Date`,
 	CONCAT(pow_first_name,' ',pow_last_name) `Owner Name`,
-	pow_cellphone_no `Contact No`,
 	usr_email `Email`,
 	pet_rfid `Chip`,
 	pet_name `Pet Name`,
@@ -108,7 +108,7 @@ class functions {
  LEFT JOIN `welfareOrganisation` ON wel_usr_id = `pet_assigned_by_usr_id`	
  LEFT JOIN `adminStaff` ON adm_usr_id = `pet_assigned_by_usr_id`
  	where `pet_usr_id` is not null
- ORDER BY `pet_id` $limit;";
+ ORDER BY `pet_register_date` DESC $limit;";
 	/*echo $sql;
 	exit();*/
 		$result = $GLOBALS['db']->select($sql);
@@ -136,8 +136,8 @@ class functions {
 	pet_id,
 	pow_id,
 	usr_id,
+	pet_register_date `Registered Date`,
 	CONCAT(pow_first_name,' ',pow_last_name) `Owner Name`,
-	pow_cellphone_no `Contact No`,
 	usr_email `Email`,
 	pet_rfid `Chip`,
 	pet_name `Pet Name`,
@@ -162,7 +162,7 @@ class functions {
  LEFT JOIN `welfareOrganisation` ON wel_usr_id = `pet_assigned_by_usr_id`	
  LEFT JOIN `adminStaff` ON adm_usr_id = `pet_assigned_by_usr_id`
  WHERE `pet_certificate_emailed` IS NOT NULL
- ORDER BY `pet_id` $limit;";
+ ORDER BY `pet_register_date` DESC $limit;";
 	/*echo $sql;
 	exit();*/
 		$result = $GLOBALS['db']->select($sql);
@@ -190,8 +190,8 @@ class functions {
 	pet_id,
 	pow_id,
 	usr_id,
+	pet_register_date `Registered Date`,
 	CONCAT(pow_first_name,' ',pow_last_name) `Owner Name`,
-	pow_cellphone_no `Contact No`,
 	usr_email `Email`,
 	pet_rfid `Chip`,
 	pet_name `Pet Name`,
@@ -216,7 +216,7 @@ class functions {
  LEFT JOIN `welfareOrganisation` ON wel_usr_id = `pet_assigned_by_usr_id`	
  LEFT JOIN `adminStaff` ON adm_usr_id = `pet_assigned_by_usr_id`
 where `pet_usr_id` is not null and (`pet_usr_id` is null or `pet_certificate_emailed` IS NULL)
- ORDER BY `pet_id` $limit;";
+ ORDER BY `pet_register_date` DESC $limit;";
 	/*echo $sql;
 	exit();*/
 		$result = $GLOBALS['db']->select($sql);
@@ -261,8 +261,8 @@ where `pet_usr_id` is not null and (`pet_usr_id` is null or `pet_certificate_ema
 	pet_id,
 	pow_id,
 	usr_id,
+	pet_register_date `Registered Date`,
 	CONCAT(pow_first_name,' ',pow_last_name) `Owner Name`,
-	pow_cellphone_no `Contact No`,
 	usr_email `Email`,
 	pet_rfid `Chip`,
 	pet_name `Pet Name`,
@@ -287,9 +287,31 @@ where `pet_usr_id` is not null and (`pet_usr_id` is null or `pet_certificate_ema
  LEFT JOIN `welfareOrganisation` ON wel_usr_id = `pet_assigned_by_usr_id`	
  LEFT JOIN `adminStaff` ON adm_usr_id = `pet_assigned_by_usr_id`
 where $where
- ORDER BY `pet_id` $limit;";
+ ORDER BY `pet_register_date` DESC $limit;";
 	/*echo $sql;
 	exit();*/
+		$result = $GLOBALS['db']->select($sql);
+		if (!$result) {
+	    	return false;
+	    } else {
+		 	return $result;
+		}
+	}
+	
+	function getAllSearchedVets($offset=null,$count=null,$srchValue) {
+		$where = "usr_email like '%$srchValue%' or vet_name like '%$srchValue%'";
+		if (!is_null($count)) $limit = "LIMIT $count";
+		if (!is_null($offset)) $limit = "LIMIT $offset,$count";
+		$sql = "SELECT 
+	vet_id,
+	usr_id,
+	vet_name `VET Name`,
+	usr_email `Email`,
+	vet_practice_name `Practice Name`
+ FROM `vet`
+ LEFT JOIN `user` ON vet_usr_id = usr_id
+ where $where
+ ORDER BY `vet_name` DESC $limit;";
 		$result = $GLOBALS['db']->select($sql);
 		if (!$result) {
 	    	return false;
@@ -482,26 +504,6 @@ union all
 		 	return $result;
 		}
 	}
-	
-	function array_to_xml($array, &$xml) {
-		if (empty($array)) return;
-	    foreach($array as $key => $value) {
-	        if(is_array($value)) {
-	            if(!is_numeric($key)){
-	                $subnode = $xml->addChild("$key");
-	                $this->array_to_xml($value, $subnode);
-	            }
-	            else{
-	                $subnode = $xml->addChild("item$key");
-	                $this->array_to_xml($value, $subnode);
-	            }
-	        }
-	        else {
-	            $xml->addChild("$key",htmlspecialchars("$value"));
-	        }
-	    }
-	}
-	
 }
 
 ?>
