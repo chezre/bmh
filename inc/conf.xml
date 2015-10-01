@@ -2,21 +2,21 @@
 <settings>
 	<testing>N</testing>
 	<email>
-		<fromAddress email="info@rfid-experts.co.za" name="BringMeHome Info" />
-		<replyToAddress email="info@rfid-experts.co.za" name="BringMeHome Info" />
+		<fromAddress email="" name="" />
+		<replyToAddress email="" name="" />
 		<CCs>
-			<address email="info@rfid-experts.co.za" name="BringMeHome Info" />
+			<address email="" name="" />
 		</CCs>
 		<BCCs>
-			<!--address email="info@linchpin-pm.co.za" name="Nicholas Lamohr" /-->
+			<address email="" name="" />
 		</BCCs>
-        <adminAddress email="samantha@rfid-experts.co.za" name="BringMeHome Admin" />
+        <adminAddress email="" name="" />
 	</email>
 	<info>
-		<contactNumber>074 258 1214</contactNumber>
+		<contactNumber></contactNumber>
 	</info>
     <KUSA>
-        <name>Cindie Permall</name>
-        <email>cindiep@kusa.co.za</email>
+        <name></name>
+        <email></email>
     </KUSA>
 </settings>
