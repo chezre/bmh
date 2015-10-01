@@ -299,7 +299,7 @@ where $where
 	}
 	
 	function getAllSearchedVets($offset=null,$count=null,$srchValue) {
-		$where = "usr_email like '%$srchValue%' or vet_name like '%$srchValue%'";
+		$where = "usr_email like '%$srchValue%' or vet_name like '%$srchValue%' or vet_practice_name like '%$srchValue%'";
 		if (!is_null($count)) $limit = "LIMIT $count";
 		if (!is_null($offset)) $limit = "LIMIT $offset,$count";
 		$sql = "SELECT 
@@ -311,12 +311,27 @@ where $where
  FROM `vet`
  LEFT JOIN `user` ON vet_usr_id = usr_id
  where $where
- ORDER BY `vet_name` DESC $limit;";
+ ORDER BY `vet_name` $limit;";
 		$result = $GLOBALS['db']->select($sql);
 		if (!$result) {
 	    	return false;
 	    } else {
 		 	return $result;
+		}
+	}
+	
+	function getSearchedVetsTotal($srchValue) {
+		$where = "usr_email like '%$srchValue%' or vet_name like '%$srchValue%' or vet_practice_name like '%$srchValue%'";
+		$sql = "SELECT 
+	count(*) `total`
+ FROM `vet`
+ LEFT JOIN `user` ON vet_usr_id = usr_id
+ where $where;";
+		$result = $GLOBALS['db']->select($sql);
+		if (!$result) {
+	    	return 0;
+	    } else {
+		 	return $result[0]['total'];
 		}
 	}
 	
