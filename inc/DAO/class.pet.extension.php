@@ -127,6 +127,42 @@ Class extendedPet extends pet {
 	    	return true;
 	    }
 	}
+	
+	function ResetMicrochip() {
+	
+		if (isset($this->pet_id) && !empty($this->pet_id)) {
+			$sql = "
+	            UPDATE `pet` SET
+				  `pet_usr_id` = null,
+	              `pet_name` = null,
+	              `pet_sex` = null,
+	              `pet_sterilized` = null,
+	              `pet_breed` = null,
+	              `pet_species` = null,
+	              `pet_birthdate` = null,
+	              `pet_distinguishing_features` = null,
+	              `pet_breeder_society` = null,
+	              `pet_photo_1` = null,
+	              `pet_photo_2` = null,
+	              `pet_photo_3` = null,
+	              `pet_photo_4` = null,
+	              `pet_general_notes` = null,
+	              `pet_weight` = null,
+	              `pet_next_vaccination_date` = null,
+                  `pet_next_vaccination_vet_usr_id` = null,
+	              `pet_status` = 'ok',
+	              `pet_register_date` = null,
+	              `pet_height` = null,
+	              `pet_assigned_by_usr_id` = null,
+				  `pet_certificate_emailed` = null,
+				  `pet_colour` = null,
+				  `pet_implanted_date` = null
+	            WHERE
+	              `pet_id` = '$this->pet_id';";
+		}
+		
+	    
+		$rowCount = $GLOBALS['db']->execute($sql);
+		return ($rowCount==1) ? $rowCount . ' row updated':$rowCount . ' rows updated';
+	}
 }
-
-?>

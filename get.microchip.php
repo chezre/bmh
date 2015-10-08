@@ -12,9 +12,19 @@ if (!isset($_SESSION['user']['roleId'])||$_SESSION['user']['roleId']!=1) {
 	}
 }
 
+if (empty($_GET['pet_rfid'])&&empty($_GET['pet_rfid'])) {
+	echo "No microchip found";
+	exit();
+}
 
 $p = new extendedPet();
-$p->Load($_GET['pet_id']);
+if (!empty($_GET['pet_id'])) $p->Load($_GET['pet_id']);
+if (!empty($_GET['pet_rfid'])) $p->LoadByRFID($_GET['pet_rfid']);
+
+if (empty($p->pet_rfid)) {
+	echo "No microchip found";
+	exit();
+}
 
 $sexes = array('M','F');
 $petSexOpts = '';
@@ -63,6 +73,7 @@ foreach ($vetIds as $k=>$v) {
 				$("#btnSearch").click();
 			});
 		});
+		$("#btnResetChip").bind("click",resetChip);
 	});
 </script>
 <div class="formHeading">Microchip Details</div>
@@ -71,7 +82,7 @@ foreach ($vetIds as $k=>$v) {
 <input type="hidden" name="pet_rfid" id="pet_rfid" value="<?php echo $p->pet_rfid; ?>" />
 <input type="hidden" name="pet_id" value="<?php echo $p->pet_id; ?>" />
 <table width="100%" cellspacing="0" align="center">
-	<tbody style="background-color: #e7e7e7">
+	<tbody <?php if (empty($_GET['resetChip'])) { ?>style="background-color: #e7e7e7"<?php } ?>>
 		
 	<?php  /* if (empty($p->pet_assigned_by_usr_id)||$p->pet_assigned_by_usr_id==$p->pet_usr_id) { */ ?>
 	<tr>
@@ -94,7 +105,7 @@ foreach ($vetIds as $k=>$v) {
 	</tr>
 		<?php /* } */ ?>
 	</tbody>
-	<tbody style="background-color: #FFF">
+	<tbody <?php if (empty($_GET['resetChip'])) { ?>style="background-color: #FFF"<?php } ?>>
 		<tr>
 	 	<td>
 		 	<label for="pet_name">Pet&apos;s name</label> &#42;
@@ -207,5 +218,9 @@ foreach ($vetIds as $k=>$v) {
 	</tr>
 </tbody>
 </table>
+<?php if (!empty($_GET['resetChip'])&&$_GET['resetChip']=='Y') { ?>
+<div class="btn" id="btnResetChip">Reset Chip</div>
+<?php } else { ?>
 <div class="btn" id="btnSaveChip">Save</div>
+<?php } ?>
 </form>
