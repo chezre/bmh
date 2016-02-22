@@ -24,21 +24,26 @@ if (empty($pow->pow_usr_id)) exit();
 $u = new extendUser();
 $u->Load($pow->pow_usr_id);
 
-if (empty($pet->pet_assigned_by_usr_id)) exit();
+if (empty($pet->pet_assigned_by_usr_id)) {
+	echo "no pet_assigned_by_usr_id";
+	exit();
+}
 $injectedBy = $GLOBALS['fn']->getInjectorInfo($pet->pet_assigned_by_usr_id);
+
 
 $margins = array(0,0,0,0);
 ob_start();
 include('html/certificate.htm');
+
 $content = ob_get_clean();
 
-$filename = $pet->pet_rfid.'-certification.pdf';
+$filename = 'certificates/'.$pet->pet_rfid.'-certification.pdf';
 try
 {
     $html2pdf = new HTML2PDF('P', 'A4', 'en',false,'ISO-8859-15',$margins);
     $html2pdf->setDefaultFont('frutiger');
     $html2pdf->writeHTML($content);
-    $html2pdf->Output($filename);
+    $html2pdf->Output($filename,'F');
 }
 catch(HTML2PDF_exception $e) {
     echo $e;

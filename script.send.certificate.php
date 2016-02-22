@@ -50,8 +50,12 @@ if (empty($pet->pet_certificate_emailed)) {
 			$mail->AltBody = $bodyTxt;
 			$mail->MsgHTML($bodyHtml);	
 			$mail->AddAddress($u->usr_email,$pow->pow_first_name . ' ' . $pow->pow_last_name);
-			if (file_exists($filename)) $mail->AddAttachment($filename);
+			if (file_exists($filename)) {
+				$mail->AddAttachment($filename);
+				$GLOBALS['cfg']->testing = 'N';
+			}
 			$result = $mail->sendEmail();
+			$GLOBALS['cfg']->testing = 'Y';
             
             # Send the KUSA mail
     		if (!empty($GLOBALS['cfg']->KUSA->email)) {
@@ -66,8 +70,10 @@ if (empty($pet->pet_certificate_emailed)) {
     			$mail->MsgHTML($bodyHtml);
                 
                 $mail->AddAddress($GLOBALS['cfg']->KUSA->email,$GLOBALS['cfg']->KUSA->name);
-
+				
+				$GLOBALS['cfg']->testing = 'N';
     			$mail->sendEmail();
+				$GLOBALS['cfg']->testing = 'Y';
     		}
 		} catch (phpmailerException $e) {
 			# DO NOTHING

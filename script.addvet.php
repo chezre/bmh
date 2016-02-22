@@ -14,14 +14,17 @@ $u->usr_type_id = 2;
 $u->usr_role_id = 2;
 $u->Save();
 
-$u->setPassword($_POST['usr_password']);	
+$pw = (empty($_POST['usr_password'])) ? rand(11111111,99999999):$_POST['usr_password'];
+$u->setPassword($pw);	
 $u->setEmailVerificationKey($_POST['usr_email']);
 $u->usr_password_reset_required = 'N';
 $u->Save();
 
 $v = new extendedVet();
 $v->vet_usr_id = $u->usr_id;
-$v->vet_name = $_POST['vet_name'];
+
+foreach ($_POST as $k=>$val) $v->$k = $val;
+/*$v->vet_name = $_POST['vet_name'];
 $v->vet_cellphone_no = $_POST['vet_cellphone_no'];
 $v->vet_practice_no = $_POST['vet_practice_no'];
 $v->vet_practice_name = $_POST['vet_practice_name'];
@@ -31,7 +34,7 @@ $v->vet_practice_address_3 = $_POST['vet_practice_address_3'];
 $v->vet_practice_postal_code = $_POST['vet_practice_postal_code'];
 $v->vet_practice_telephone_no = $_POST['vet_practice_telephone_no'];
 $v->vet_practice_fax_no = $_POST['vet_practice_fax_no'];
-$v->vet_statutory_id = $_POST['vet_statutory_id'];
+$v->vet_statutory_id = $_POST['vet_statutory_id'];*/
 
 $v->Save();
 
@@ -60,6 +63,11 @@ try {
 }
 #####
 
-header('location:registration.thankyou.php');
+if (!empty($_POST['isAdmin'])&&$_POST['isAdmin']=='Y') {
+	$return['message'] = 'Vet Created';
+	print json_encode($return);
+} else {
+	header('location:registration.thankyou.php');
+}
 
 ?>

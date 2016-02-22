@@ -12,7 +12,7 @@ if (!isset($_SESSION['user']['roleId'])||$_SESSION['user']['roleId']!=1) {
 	}
 }
 
-if (empty($_GET['pet_rfid'])&&empty($_GET['pet_rfid'])) {
+if (empty($_GET['pet_rfid'])&&empty($_GET['pet_id'])) {
 	echo "No microchip found";
 	exit();
 }
@@ -26,18 +26,16 @@ if (empty($p->pet_rfid)) {
 	exit();
 }
 
-$sexes = array('M','F');
-$petSexOpts = '';
-foreach ($sexes as $s) {
- 	$selected = ($p->pet_sex==$s) ? ' SELECTED':'';
-	$petSexOpts .= '<option value="'.$s.'"'.$selected.'>'.$s.'</option>';	
-}
+/*
+echo "<pre />";
+print_r($p);
+exit();*/
 
-$steris = array('Y','N');
-$steriOpts = '';
-foreach ($steris as $s) {
-	$selected = ($p->pet_sterilized==$s) ? ' SELECTED':'';
-	$steriOpts .= '<option value="'.$s.'"'.$selected.'>'.$s.'</option>';
+$sexes = $GLOBALS['fn']->getAllSexes();
+$petSexOpts = '';
+foreach ($sexes as $k=>$v) {
+ 	$selected = ($p->pet_sex==$v['id']) ? ' SELECTED':'';
+	$petSexOpts .= '<option value="'.$v['id'].'"'.$selected.'>'.$v['desc'].'</option>';	
 }
 
 $species = $GLOBALS['fn']->getAllSpecies();
@@ -70,10 +68,11 @@ foreach ($vetIds as $k=>$v) {
 		$("#btnSaveChip").click(function(){
 			$.post("admin.save.chip.php",$("#frmChip").serialize()).done(function(data){
 				var json = $.parseJSON(data);
+				console.log(json);
 				$("#btnSearch").click();
 			});
 		});
-		$("#btnResetChip").bind("click",resetChip);
+		<?php if (!empty($_GET['resetChip'])&&$_GET['resetChip']=='Y') { ?>$("#btnResetChip").bind("click",resetChip);<?php } ?>
 	});
 </script>
 <div class="formHeading">Microchip Details</div>
@@ -108,12 +107,20 @@ foreach ($vetIds as $k=>$v) {
 	<tbody <?php if (empty($_GET['resetChip'])) { ?>style="background-color: #FFF"<?php } ?>>
 		<tr>
 	 	<td>
-		 	<label for="pet_name">Pet&apos;s name</label> &#42;
+		 	<label for="pet_name">Pet&apos;s Registered name</label> &#42;
 		</td>
 		<td>
 			<input class="inp" type="text" name="pet_name" id="pet_name" value="<?php echo $p->pet_name; ?>"  />
 		</td>
 	</tr>
+		<tr>
+		 	<td>
+			 	<label for="pet_name">Pet&apos;s Call name</label> &#42;
+			</td>
+			<td>
+				<input class="inp" type="text" name="pet_call_name" id="pet_call_name" value="<?php echo $p->pet_call_name; ?>"  />
+			</td>
+		</tr>
 	<tr>
 	 	<td>
 		 	<label for="pet_sex">Sex</label> 
@@ -129,9 +136,7 @@ foreach ($vetIds as $k=>$v) {
 		 	<label for="pet_sterilized">Sterilized</label>
 		</td>
 		<td>
-			<select class="inp" name="pet_sterilized" id="pet_sterilized">
-				<?php echo $steriOpts; ?>
-			</select>
+			<input class="inp" type="text" name="pet_sterilized" id="pet_sterilized" value="<?php echo $p->pet_sterilized; ?>" />
 		</td>
 	</tr>
 	<tr>
@@ -160,7 +165,7 @@ foreach ($vetIds as $k=>$v) {
 	</tr>
 	<tr>
 	 	<td>
-		 	<label for="pet_birthdate">Birth date</label>
+		 	<label for="pet_birthdate">Year of Birth</label>
 		</td>
 		<td>
 			<input class="inp" type="text" name="pet_birthdate" id="pet_birthdate" value="<?php echo $p->pet_birthdate; ?>" />

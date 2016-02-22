@@ -41,8 +41,7 @@ $u->Load($_GET['pow_usr_id']);
 		 	<label for="usr_email">Email</label>
 		</td>
 		<td>
-			<?php echo $u->usr_email; ?>
-			<input type="hidden" name="usr_email" value="<?php echo $u->usr_email; ?>" />
+			<input type="text" name="usr_email" value="<?php echo $u->usr_email; ?>" />
 			<input type="hidden" name="usr_id" value="<?php echo $u->usr_id; ?>" />
             <input type="hidden" name="pow_usr_id" value="<?php echo $u->usr_id; ?>" />
 		</td>

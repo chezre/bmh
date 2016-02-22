@@ -10,6 +10,11 @@ $u->setPassword($_POST['usr_password']);
 $u->usr_email = $_POST['usr_email'];
 $u->checkPassword();
 
+if ($u->usr_type_id!=3) {
+    header('location:site.closed.php');
+    exit();
+}
+
 if ($u->isAuthenticated) {
  	
  	session_start();

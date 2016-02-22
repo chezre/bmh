@@ -12,15 +12,15 @@
 	#headingDiv {
 		position: absolute;
 		left: 256px;
-		top: 45px;
+		top: 121px;
 	}
 	#headingDiv div {
 		margin-bottom: 9px;
 	} 
 	#petDiv {
 		position: absolute;
-		left: 317px;
-		top: 252px;
+		left: 327px;
+		top: 302px;
 	}
 	#petDiv div,#vetDiv div,#ownerDiv div {
 		margin-bottom: 7px;
@@ -29,13 +29,13 @@
 	} 
 	#vetDiv {
 		position: absolute;
-		left: 317px;
-		top: 431px;
+		left: 327px;
+		top: 490px;
 	}
 	#ownerDiv {
 		position: absolute;
-		left: 317px;
-		top: 585px;
+		left: 327px;
+		top: 632px;
 	} 
 	#barcodeDiv {
 		position: absolute;
@@ -46,24 +46,29 @@
 <page>
 	<div id="pdfDiv">
 		<div><img src="img/certificate.jpg" style="width:780px;height:1110px;"  /></div>
-		<div id="barcodeDiv">barcode sticker goes here</div> 
+		<!--div id="barcodeDiv">barcode sticker goes here</div--> 
 		<div id="headingDiv">
-			<div><?php echo (empty($pet->pet_name)) ? '&nbsp;':$pet->pet_name; ?></div>
+			<div><?php echo (empty($pet->pet_call_name)) ? '&nbsp;':$pet->pet_call_name; ?></div>
 			<div style="font-size: 10pt"><?php echo (empty($pet->pet_rfid)) ? '&nbsp;':$pet->pet_rfid; ?></div>
 			<div><?php echo (empty($pow->pow_first_name)&&empty($pow->pow_last_name)) ? '&nbsp;':$pow->pow_first_name . ' ' . $pow->pow_last_name; ?></div>
 			<div><?php echo (empty($pet->pet_birthdate)) ? '&nbsp;':$pet->pet_birthdate; ?></div>
 		</div>
 		<div id="petDiv">
-			<div><?php echo (empty($pet->pet_birthdate)) ? '&nbsp;':$pet->pet_name; ?></div>
-			<div><?php echo (empty($pet->pet_breed)) ? '&nbsp;':$pet->pet_breed; ?></div>
+			<div><?php echo (empty($pet->pet_name)) ? '&nbsp;':$pet->pet_name; ?></div>
+			<div><?php echo (empty($pet->pet_name)) ? '&nbsp;':$pet->pet_call_name; ?></div>
 			<div><?php echo (empty($pet->pet_species)) ? '&nbsp;':$pet->pet_species; ?></div>
-			<div><?php if ($pet->pet_sex=='M') { echo 'Male'; }
-			elseif ($pet->pet_sex=='F') { echo 'Female'; } else {echo '&nbsp;'; } ?></div>
+			<div><?php echo (empty($pet->pet_breed)) ? '&nbsp;':$pet->pet_breed; ?></div>
+			<div><?php if ($pet->pet_sex=='1') { echo 'Male'; }
+elseif ($pet->pet_sex=='2') { echo 'Female'; } 
+elseif ($pet->pet_sex=='3') { echo 'Stallion'; } 
+elseif ($pet->pet_sex=='4') { echo 'Mare'; } 
+elseif ($pet->pet_sex=='5') { echo 'Gelding'; } 
+else {echo '&nbsp;'; } ?></div>
 			<div><?php echo (empty($pet->pet_colour)) ? '&nbsp;':$pet->pet_colour; ?></div>
 		</div>
 		<div id="vetDiv">
 			<div><?php echo (empty($injectedBy['name'])) ? '&nbsp;':$injectedBy['name']; ?></div>
-			<div><?php echo (empty($injectedBy['identityNo'])) ? '&nbsp;':$injectedBy['identityNo']; ?></div>
+			<div><?php echo (empty($injectedBy['practiceName'])) ? '&nbsp;':$injectedBy['practiceName']; ?></div>
 			<div><?php echo (empty($injectedBy['contactNo'])) ? '&nbsp;':$injectedBy['contactNo']; ?></div>
 			<div><?php echo (empty($pet->pet_implanted_date)) ? '&nbsp;':date("Y-m-d",strtotime($pet->pet_implanted_date)); ?></div>
 		</div>

@@ -26,7 +26,7 @@ $u->Load($v->vet_usr_id);
 			$.post("admin.save.vet.php",$("#frmVet").serialize()).done(function(data)
 			{
 				var json = $.parseJSON(data);
-				$("#saveResult").empty().append(json.message).show().hide(5000);
+				$("#saveResult").empty().append(json.message).show();
 			});
 		});
 	});

@@ -30,7 +30,7 @@ $hide = array('vet_id','usr_id');
 $total = 0;
 
 if (!empty($data)) {
-	$total = count($data);
+	$total = $GLOBALS['fn']->getSearchedVetsTotal($srchValue);
 	foreach ($data as $d) {
 		$colspan = 0;
 		if (empty($thead)) {

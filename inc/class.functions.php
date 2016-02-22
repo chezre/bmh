@@ -438,6 +438,16 @@ inner join `user` on wel_usr_id = usr_id WHERE `wel_verified_by_admin` = 'N'";
 		 	return $result;
 		}
 	}
+	
+	function getAllSexes() {
+		$sql = "SELECT * FROM `sexes`;";
+		$result = $GLOBALS['db']->select($sql);
+		if (empty($result)) {
+	    	return false;
+	    } else {
+		 	return $result;
+		}
+	}
 
 	function populatePetImageForEdit($imgNumber,$imageFilename=null,$showImage=false) {
 	 	$display = ($showImage) ? '':'display:none;';
@@ -486,21 +496,25 @@ inner join `user` on wel_usr_id = usr_id WHERE `wel_verified_by_admin` = 'N'";
 				$implantedBy['name'] = $vet->vet_name;
 				$implantedBy['contactNo'] = $vet->vet_practice_telephone_no;
 				$implantedBy['identityNo'] = $vet->vet_statutory_id;
+				$implantedBy['practiceName'] = $vet->vet_practice_name;
 				break;
 			case ($welfare->LoadByUserId($usrId)):
 				$implantedBy['name'] = $welfare->wel_contact_fullname;
 				$implantedBy['contactNo'] = $welfare->wel_contact_number;
 				$implantedBy['identityNo'] = '';
+				$implantedBy['practiceName'] = $welfare->wel_name;
 				break;
 			case ($admin->LoadByUserId($usrId)):
 				$implantedBy['name'] = 'BringMeHome Admin';
 				$implantedBy['contactNo'] = (string)$GLOBALS['cfg']->info->contactNumber;
 				$implantedBy['identityNo'] = '';
+				$implantedBy['practiceName'] = 'BringMeHome Admin';
 				break;
 			case ($pow->LoadByUserId($usrId)):
 				$implantedBy['name'] = trim($pow->pow_first_name . ' ' . $pow->pow_last_name);
 				$implantedBy['contactNo'] = (empty($pow->pow_cellphone_no)) ? $pow->pow_telephone_no:$pow->pow_cellphone_no;
 				$implantedBy['identityNo'] = '';
+				$implantedBy['practiceName'] = '';
 				break;
 		}
 		return $implantedBy;

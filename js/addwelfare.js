@@ -23,7 +23,6 @@ $(document).ready(function(){
    }); 
 });
 function validate() {
-	
 	var email = document.getElementById('usr_email');
 	if (email.value.trim().length==0) {
 		alert('The email address is required to login.');
@@ -36,6 +35,7 @@ function validate() {
 		email.focus();
 		return;
 	}
+	
 	
 	var cfm_email = document.getElementById('cfm_email');
 	if (email.value.trim()!=cfm_email.value.trim()) {
@@ -68,40 +68,64 @@ function validate() {
 		}
 	}
 	
-	var fname = document.getElementById('vet_name');
+	var wname = document.getElementById('wel_name');
+	if (wname.value.trim().length==0) {
+		alert('The welfare organisation\'s name is required.');
+		wname.focus();
+		return;
+	}
+	
+	var waddr1 = document.getElementById('wel_address_1');
+	var waddr2 = document.getElementById('wel_address_2');
+	if (waddr1.value.trim().length==0&&waddr2.value.trim().length==0) {
+		alert('The welfare organisation\'s address is required.');
+		waddr1.focus();
+		return;
+	}
+	
+	var wpcode = document.getElementById('wel_postal_code');
+	if (wpcode.value.trim().length==0) {
+		alert('The welfare organisation\'s postal code is required.');
+		wpcode.focus();
+		return;
+	}
+	
+	var wcity = document.getElementById('wel_city');
+	if (wcity.value.trim().length==0) {
+		alert('The welfare organisation\'s city is required.');
+		wcity.focus();
+		return;
+	}
+
+	var wcountry = document.getElementById('wel_country');
+	if (wcountry.value.trim().length==0) {
+		alert('The welfare organisation\'s country is required.');
+		wcountry.focus();
+		return;
+	}
+
+	var fname = document.getElementById('wel_contact_fullname');
 	if (fname.value.trim().length==0) {
-		alert('Your full name is required.');
+		alert('The welfare organisation\'s contact person\'s name is required.');
 		fname.focus();
 		return;
 	}
 	
-	/*var stateId = document.getElementById('vet_statutory_id');
-	if (stateId.value.trim().length==0) {
-		alert('Your ID number is required.');
-		stateId.focus();
-		return;
-	}*/
-	
-	var pracNo = document.getElementById('vet_practice_no');
-	if (fname.value.trim().length==0) {
-		alert('Your practice number is required.');
-		pracNo.focus();
+	var cellphone = document.getElementById('wel_contact_mobile_number');
+	if (cellphone.value.trim().length==0) {
+		alert('The welfare organisation\'s contact person\'s cellphone number is required.');
+		cellphone.focus();
 		return;
 	}
-	var telephone = document.getElementById('vet_practice_telephone_no');
+	
+	var telephone = document.getElementById('wel_contact_number');
 	if (telephone.value.trim().length==0) {
-		alert('Your telephone number is required.');
+		alert('The welfare organisation\'s contact person\'s landline number is required.');
+		telephone.focus();
 		return;
 	}
-	
-	/*var cellphone = document.getElementById('vet_cellphone_no');
-	var telephone = document.getElementById('vet_practice_telephone_no');
-	if (cellphone.value.trim().length==0&&telephone.value.trim().length==0) {
-		alert('Your cellphone number/landline number is required.');
-		return;
-	}*/
 		
-	document.frmAddvet.submit();
+	document.frmAddwelfare.submit();
 }
 
 $(function() {

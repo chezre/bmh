@@ -1,0 +1,84 @@
+.result {
+	font-weight: bold;
+	color: #F00;
+	font-size: 12pt;
+	float: right;
+}
+.fail {
+	color: #F00;
+	font-size: 9pt;
+	text-align: left;
+	margin: 0 auto;
+	width: 550px;
+	height: auto;
+	padding: 10px;
+	overflow: hidden;
+}
+#formDiv {
+ 	padding:10px;
+    border: 5px solid #909299;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+	width: 550px;
+	margin: auto;
+}
+input {
+    width: 300px;
+}
+
+#heading {
+	border: 5px solid #909299;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+	background-color: #33CCFF;
+	color: #FFF;
+	padding: 10px;
+	font-size: 18pt;
+	margin: auto;
+	margin-bottom: 15px;
+	width: 600px;
+}
+#vetDetails {
+	border: 5px solid #909299;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+	padding: 10px;
+	margin: auto;
+	width: 600px;	
+}
+a {
+    text-decoration: none;
+}
+#vetFrm {
+	margin-top: 15px;
+}
+#tbodyVets input {
+	width: 100px !important;
+}
+#vetFrm table {
+	font-size: 9pt;
+}
+.saveBtn,.addBtn,#btnClear {
+    background-color: #CCC;
+    padding: 3px;
+    text-align: center;
+    color: #000;
+	cursor: pointer;
+	border: 3px solid #000;
+	float: left;
+	width: 90px;
+}
+#btnClear {
+	margin-left: 10px;
+}
+.saveBtn,#btnClear {
+	margin-top: 5px;
+	margin-bottom: 10px;
+}
+tbody.newVet input {
+	width: 100px !important;
+}
+
+tbody.newVet:nth-child(odd){
+	background-color: #CCC;
+}

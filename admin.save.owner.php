@@ -3,6 +3,12 @@
 require('inc/application.php');
 require('inc/security.php');
 
+$u = new extendUser();
+$u->Load($_POST['usr_id']);
+$u->usr_email = $_POST['usr_email'];
+$u->Save();
+
+
 $p = new extendedPetowner();
 if (empty($_POST['pow_id'])) {
     $p->LoadByUserId($_POST['pow_usr_id']);

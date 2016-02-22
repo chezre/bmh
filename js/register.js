@@ -23,18 +23,17 @@ $(document).ready(function(){
    }); 
 });
 function validate() {
-	
 	var email = document.getElementById('usr_email');
 	if (email.value.trim().length==0) {
 		alert('The email address is required to login.');
 		email.focus();
-		return;
+		return false;
 	}
 	
 	if (email.value.trim().indexOf('@')==-1||email.value.trim().indexOf('.')==-1) {
 		alert('Email address is invalid');
 		email.focus();
-		return;
+		return false;
 	}
 	
 	var cfm_email = document.getElementById('cfm_email');
@@ -50,58 +49,46 @@ function validate() {
 		if (pwd.value.trim().length==0) {
 			alert('The password is required');
 			pwd.focus();
-			return;
+			return false;
 		}
 		if (pwd.value.trim().length<6) {
 			alert('Your password must contain at least 6 characters');
 			pwd.focus();
-			return;
+			return false;
 		}
 		if (cpwd.value.trim().length==0) {
 			alert('Please confirm your password.');
 			cpwd.focus();
-			return;
+			return false;
 		}
 		if (pwd.value.trim() != cpwd.value.trim()) {
 			alert('Your passwords don\'t match.');
-			return;
+			return false;
 		}
 	}
 	
-	var fname = document.getElementById('vet_name');
+	var fname = document.getElementById('pow_first_name');
 	if (fname.value.trim().length==0) {
-		alert('Your full name is required.');
+		alert('Your first name is required.');
 		fname.focus();
-		return;
+		return false;
 	}
 	
-	/*var stateId = document.getElementById('vet_statutory_id');
-	if (stateId.value.trim().length==0) {
-		alert('Your ID number is required.');
-		stateId.focus();
-		return;
-	}*/
-	
-	var pracNo = document.getElementById('vet_practice_no');
-	if (fname.value.trim().length==0) {
-		alert('Your practice number is required.');
-		pracNo.focus();
-		return;
-	}
-	var telephone = document.getElementById('vet_practice_telephone_no');
-	if (telephone.value.trim().length==0) {
-		alert('Your telephone number is required.');
-		return;
+	var lname = document.getElementById('pow_last_name');
+	if (lname.value.trim().length==0) {
+		alert('Your last name is required.');
+		lname.focus();
+		return false;
 	}
 	
-	/*var cellphone = document.getElementById('vet_cellphone_no');
-	var telephone = document.getElementById('vet_practice_telephone_no');
+	var cellphone = document.getElementById('pow_cellphone_no');
+	var telephone = document.getElementById('pow_telephone_no');
 	if (cellphone.value.trim().length==0&&telephone.value.trim().length==0) {
 		alert('Your cellphone number/landline number is required.');
-		return;
-	}*/
-		
-	document.frmAddvet.submit();
+		return false;
+	}
+	
+    document.frmOwnerRegister.submit();
 }
 
 $(function() {
